@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.EF.Models;
+using DAL.Repo;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +9,16 @@ using System.Threading.Tasks;
 
 namespace DAL.EF
 {
-    internal class PcShopContext:DbContext
+    public class PcShopContext:DbContext
     {
+        public DbSet<Moderator> Moderators { get; set; }
+
+        public DbSet<Salary> Salaris { get; set; }
+
+        public DbSet<AttendanceReport> AttendanceReports { get; set; }
+
+        public DbSet<Token> Tokens { get; set; }
     }
+
+    
 }
