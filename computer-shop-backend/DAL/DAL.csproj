@@ -53,20 +53,40 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="EF\Models\AttendanceReport.cs" />
     <Compile Include="EF\Models\Brand.cs" />
     <Compile Include="EF\Models\Category.cs" />
     <Compile Include="EF\Models\Customer.cs" />
+    <Compile Include="EF\Models\Moderator.cs" />
     <Compile Include="EF\Models\Product.cs" />
+    <Compile Include="EF\Models\Salary.cs" />
+    <Compile Include="EF\Models\Token.cs" />
     <Compile Include="EF\PcShopContext.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
+    <Compile Include="Interfaces\IChange.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Interfaces\IRepos.cs" />
+    <Compile Include="Migrations\202312221650573_DBINIT.cs" />
+    <Compile Include="Migrations\202312221650573_DBINIT.designer.cs">
+      <DependentUpon>202312221650573_DBINIT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\AttendanceReportRepo.cs" />
+    <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
+    <Compile Include="Repo\SalaryRepo.cs" />
+    <Compile Include="Repo\TokenRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202312221650573_DBINIT.resx">
+      <DependentUpon>202312221650573_DBINIT.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

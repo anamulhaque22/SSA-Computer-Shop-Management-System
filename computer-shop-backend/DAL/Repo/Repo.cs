@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class Repo
+   public class Repo
     {
         internal PcShopContext db;
         internal Repo() { 
