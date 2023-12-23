@@ -41,5 +41,10 @@ namespace DAL
             return new ModeratorRepo();
         }
 
+        public static IRepo<Product, int, bool>ProductData()
+        {
+            return new ProductRepo();
+        }
+
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="DTOs\MAttendanceReportDTO.cs" />
     <Compile Include="DTOs\ModeratorDTO.cs" />
     <Compile Include="DTOs\MSalaryDTO.cs" />
+    <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\SalaryDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModeratorService.cs" />
     <Compile Include="Services\SalaryService.cs" />
+    <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

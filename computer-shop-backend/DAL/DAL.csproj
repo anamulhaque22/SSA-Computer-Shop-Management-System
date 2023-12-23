@@ -61,14 +61,16 @@
     <Compile Include="EF\Models\Product.cs" />
     <Compile Include="EF\Models\Salary.cs" />
     <Compile Include="EF\Models\Token.cs" />
+    <Compile Include="EF\Models\Order.cs" />
+    <Compile Include="EF\Models\OrderDetail.cs" />
     <Compile Include="EF\PcShopContext.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Interfaces\IRepos.cs" />
-    <Compile Include="Migrations\202312221650573_DBINIT.cs" />
-    <Compile Include="Migrations\202312221650573_DBINIT.designer.cs">
-      <DependentUpon>202312221650573_DBINIT.cs</DependentUpon>
+    <Compile Include="Migrations\202312222354044_InitialDb.cs" />
+    <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
+      <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,14 +79,15 @@
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\SalaryRepo.cs" />
     <Compile Include="Repo\TokenRepo.cs" />
+    <Compile Include="Repo\ProductRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202312221650573_DBINIT.resx">
-      <DependentUpon>202312221650573_DBINIT.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312222354044_InitialDb.resx">
+      <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

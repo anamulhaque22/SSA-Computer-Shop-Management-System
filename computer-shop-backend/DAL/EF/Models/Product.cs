@@ -16,6 +16,21 @@ namespace DAL.EF.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Required]
+        [Column(TypeName = "decimal")]
+        public decimal ProductPrice { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal")]
+        public decimal CostPrice { get; set; }
+
+        [Required]
+        public int Quantity { get; set; }
+
+        [Required]
+        [Column(TypeName ="text")]
+        public string Description { get; set; }
+
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
 

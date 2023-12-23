@@ -11,6 +11,15 @@ namespace DAL.EF
 {
     public class PcShopContext:DbContext
     {
+
+        public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
         public DbSet<Moderator> Moderators { get; set; }
 
         public DbSet<Salary> Salaris { get; set; }
