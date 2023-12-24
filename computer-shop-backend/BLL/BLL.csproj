@@ -51,6 +51,8 @@
     <Compile Include="DTOs\MAttendanceReportDTO.cs" />
     <Compile Include="DTOs\ModeratorDTO.cs" />
     <Compile Include="DTOs\MSalaryDTO.cs" />
+    <Compile Include="DTOs\ProductCategoryBrandDTO.cs" />
+    <Compile Include="DTOs\ProductCreateDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\SalaryDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />

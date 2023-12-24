@@ -12,7 +12,7 @@ namespace DAL.EF.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Product name is require!")]
         [StringLength(255)]
         public string Name { get; set; }
 
