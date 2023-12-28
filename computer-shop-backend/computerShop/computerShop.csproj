@@ -95,6 +95,8 @@
     <Compile Include="Auth\Logged.cs" />
     <Compile Include="Controllers\AttendanceReportController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\OrderController.cs" />

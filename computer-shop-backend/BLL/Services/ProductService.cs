@@ -45,6 +45,29 @@ namespace BLL.Services
             return cnvrt;
         }
 
+        // filtering product
+        public static List<ProductCategoryBrandDTO> GetFilteredProduct(ProductFilterDTO p)
+        {
+            var data = DataAccessFactory.ProductFilterData().FilterProduct(new DAL.Criteria.ProductFilterCriteria
+            {
+                BrandId = p.BrandId,
+                CategoryId = p.CategoryId,
+                InStock = p.InStock,
+                MaxPrice = p.MaxPrice,
+                MinPrice = p.MinPrice,
+                SortAscending = p.SortAscending,
+                PageNumber = p.PageNumber,
+                PageSize = p.PageSize
+            });
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Product, ProductCategoryBrandDTO>();
+            });
+            var mapper = new Mapper(config);
+            var cnvrt = mapper.Map<List<ProductCategoryBrandDTO>>(data);
+            return cnvrt;
+        }
+
         public static bool UpdateProduct(ProductCreateDTO p)
         {
             var config = new MapperConfiguration(cfg =>

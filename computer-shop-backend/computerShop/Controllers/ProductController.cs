@@ -10,10 +10,11 @@ using System.Web.Http;
 
 namespace computerShop.Controllers
 {
+    [RoutePrefix("api/products")]
     public class ProductController : ApiController
     {
         [HttpPost]
-        [Route("api/product/create")]
+        [Route("create")]
         public HttpResponseMessage AddProduct(ProductCreateDTO p)
         {
             try { 
@@ -28,7 +29,7 @@ namespace computerShop.Controllers
         }
 
         [HttpGet]
-        [Route("api/product/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetAProduct(int id)
         {
             try
@@ -42,7 +43,7 @@ namespace computerShop.Controllers
         }
 
         [HttpGet]
-        [Route("api/products")]
+        [Route("")]
         public HttpResponseMessage GetAllProduct()
         {
             try
@@ -57,7 +58,22 @@ namespace computerShop.Controllers
         }
 
         [HttpGet]
-        [Route("api/product/delete/{id}")]
+        [Route("filter")]
+        public HttpResponseMessage FilterProduct([FromUri] ProductFilterDTO filter)
+        {
+            try
+            {
+                var data = ProductService.GetFilteredProduct(filter);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpGet]
+        [Route("delete/{id}")]
         public HttpResponseMessage Delete(int id) {
             try
             {
@@ -74,7 +90,7 @@ namespace computerShop.Controllers
         }
 
         [HttpPost]
-        [Route("api/product/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateProduct(ProductCreateDTO p) {
             try
             {

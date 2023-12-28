@@ -1,14 +1,16 @@
-﻿using DAL.EF.Models;
+﻿using DAL.Criteria;
+using DAL.EF.Models;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class ProductRepo :Repo, IRepo<Product, int, bool>
+    internal class ProductRepo :Repo, IRepo<Product, int, bool>, IProductRepo<ProductFilterCriteria, Product>
     {
         public bool Create(Product obj)
         {
@@ -20,6 +22,57 @@ namespace DAL.Repo
         {
             db.Products.Remove(db.Products.Find(id));
             return db.SaveChanges() > 0;
+        }
+
+        public List<Product> FilterProduct(ProductFilterCriteria filter)
+        {
+            var query = db.Products.AsQueryable();
+
+            if (filter.CategoryId.HasValue)
+            {
+                query = query.Where(p => p.CategoryId == filter.CategoryId.Value);
+            }
+
+            if (filter.BrandId.HasValue)
+            {
+                query = query.Where(p => p.BrandId == filter.BrandId.Value);
+            }
+
+            if (filter.InStock.HasValue)
+            {
+                query = query.Where(p => p.Quantity > 0);
+            }
+
+            if (filter.MinPrice.HasValue)
+            {
+                query = query.Where(p => p.ProductPrice >= filter.MinPrice.Value);
+            }
+
+            if (filter.MaxPrice.HasValue)
+            {
+                query = query.Where(p => p.ProductPrice <= filter.MaxPrice.Value);
+            }
+
+            // Apply sorting (ascending or descending)
+            
+            if (filter.SortAscending)
+            {
+                query = query.OrderBy(p => p.ProductPrice);
+            }
+            else
+            {
+                query = query.OrderByDescending(p => p.ProductPrice);
+            }
+
+            // Apply pagination
+            if (filter.PageNumber.HasValue && filter.PageSize.HasValue)
+            {
+                query = query
+                    .Skip((filter.PageNumber.Value - 1) * filter.PageSize.Value)
+                    .Take(filter.PageSize.Value);
+            }
+
+            return query.ToList();
         }
 
         public List<Product> Get()

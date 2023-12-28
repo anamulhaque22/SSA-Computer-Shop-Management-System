@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Criteria\ProductFilterCriteria.cs" />
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\Models\AttendanceReport.cs" />
     <Compile Include="EF\Models\Brand.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="EF\PcShopContext.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
+    <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Interfaces\IRepos.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
@@ -75,6 +77,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AttendanceReportRepo.cs" />
+    <Compile Include="Repo\BrandRepo.cs" />
+    <Compile Include="Repo\CategoryRepo.cs" />
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\SalaryRepo.cs" />
