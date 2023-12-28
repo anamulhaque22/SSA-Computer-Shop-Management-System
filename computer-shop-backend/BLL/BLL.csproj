@@ -51,6 +51,7 @@
     <Compile Include="DTOs\MAttendanceReportDTO.cs" />
     <Compile Include="DTOs\ModeratorDTO.cs" />
     <Compile Include="DTOs\MSalaryDTO.cs" />
+    <Compile Include="DTOs\PieChartItemDTO.cs" />
     <Compile Include="DTOs\SalaryDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

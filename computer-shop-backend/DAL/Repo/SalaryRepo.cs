@@ -44,5 +44,15 @@ namespace DAL.Repo
                 return true;
             return false;
         }
+
+        public Dictionary<string, decimal> ReadForPieChart()
+        {
+            return db.Salaris
+                .GroupBy(s => s.MonthName)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Sum(s => Decimal.TryParse(s.Amount, out var amount) ? amount : 0)
+                );
+        }
     }
 }
