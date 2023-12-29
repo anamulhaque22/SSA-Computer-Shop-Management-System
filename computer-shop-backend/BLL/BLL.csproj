@@ -64,6 +64,7 @@
     <Compile Include="DTOs\MAttendanceReportDTO.cs" />
     <Compile Include="DTOs\ModeratorDTO.cs" />
     <Compile Include="DTOs\MSalaryDTO.cs" />
+    <Compile Include="DTOs\PieChartItemDTO.cs" />
     <Compile Include="DTOs\ProductCategoryBrandDTO.cs" />
     <Compile Include="DTOs\ProductCreateDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />

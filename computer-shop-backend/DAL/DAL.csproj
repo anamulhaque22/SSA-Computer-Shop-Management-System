@@ -73,9 +73,9 @@
     <Compile Include="EF\PcShopContext.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
+    <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Interfaces\IRepos.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
