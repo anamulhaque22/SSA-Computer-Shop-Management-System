@@ -11,6 +11,7 @@ namespace DAL.Interfaces
         RET Create(Type obj);
         //List<Type> Get();
         Type Get(Username username);
+        Type GetWithoutPassword(Username username);
         RET Update(Type obj);
     }
 }

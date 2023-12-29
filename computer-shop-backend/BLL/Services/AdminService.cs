@@ -22,9 +22,9 @@ namespace BLL.Services
             var cData = mapper.Map<Admin>(data);
             return DataAccessFactory.AdminData().Create(cData);
         }
-        public static AdminDTO Read(string username) 
+        public static AdminDTO Get(string username) 
         {
-            var data = DataAccessFactory.AdminData().Get(username);
+            var data = DataAccessFactory.AdminData().GetWithoutPassword(username);
             if(data == null)
             {
                 return null;

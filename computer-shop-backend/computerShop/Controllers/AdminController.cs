@@ -34,6 +34,28 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+        [HttpPost]
+        [Route("admin/Get")]
+        public HttpResponseMessage Get(AdminDTO obj)
+        {
+            try
+            {
+                var response = AdminService.Get(obj.Username);
+                if (response != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, response);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "No Data Found"});
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
         public bool confirmPassChecker(string password, string cPassword)
         {
             if (password == cPassword)

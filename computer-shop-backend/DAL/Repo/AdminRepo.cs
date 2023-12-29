@@ -16,10 +16,16 @@ namespace DAL.Repo
             db.Admins.Add(obj);
             return db.SaveChanges() > 0;
         }
-
+        public Admin GetWithoutPassword(string username)
+        {
+            var data = db.Admins.Where(d => d.Username.Equals(username)).FirstOrDefault();
+            data.Password = null;
+            data.Otp = null;
+            return data;
+        }
         public Admin Get(string username)
         {
-            return db.Admins.Where(d=>d.Equals(username)).FirstOrDefault();
+            return db.Admins.Where(d=>d.Username.Equals(username)).FirstOrDefault();
         }
 
         public bool Update(Admin obj)
