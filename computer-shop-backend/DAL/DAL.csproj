@@ -170,11 +170,13 @@
     <Compile Include="Repo\AttendanceReportRepo.cs" />
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
+    <Compile Include="Repo\CustomerRepo.cs" />
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\SalaryRepo.cs" />
     <Compile Include="Repo\TokenRepo.cs" />
     <Compile Include="Repo\ProductRepo.cs" />
+    <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Utils\CloudinaryService.cs" />
   </ItemGroup>
   <ItemGroup>

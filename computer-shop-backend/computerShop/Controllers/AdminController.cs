@@ -15,7 +15,6 @@ namespace computerShop.Controllers
     {
         [HttpPost]
         [Route("admin/create")]
-        [AdminLogged]
         public HttpResponseMessage Create(AdminSingupDTO obj)
         {
             try
@@ -30,6 +29,63 @@ namespace computerShop.Controllers
                 if (!ProductKeyService.IsValid(obj.Key)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Product Key", status = 3 }); }
                                 
                 if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status=4 });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [Route("admin/update")]
+        [AdminLogged]
+        public HttpResponseMessage Update(AdminUpdateDTO obj)
+        {
+            try
+            {
+                //status 0 = Model Invalid
+                //status 1 = Confirm Password Invalid
+                //status 2 = OTP Invalid
+                //status 4 = Update success
+                var token = Request.Headers.Authorization?.ToString();
+
+                if (!ModelState.IsValid) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Response", status = 0 }); }
+
+                if (AdminService.Update(obj, token))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { message = "Admin Information Updated successfully", status = 4 });
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [Route("admin/updatePassword")]
+        [AdminLogged]
+        public HttpResponseMessage UpdatePassword(AdminUpdatePasswordModel obj)
+        {
+            try
+            {
+                //status 0 = Model Invalid
+                //status 1 = Confirm Password Invalid
+                //status 2 = OTP Invalid
+                //status 3 = Current Password not matched
+                //status 4 = Update success
+                var token = Request.Headers.Authorization?.ToString();
+                if (!ModelState.IsValid) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Response", status = 0 }); }
+                if(!AdminService.isCurrPassExist(token, obj.currPassword))
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Current Password not matched", status = 3 });
+                }
+                if (!confirmPassChecker(obj.Password, obj.cPassword)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Password and Confirm Password not matched", status = 1 }); }
+
+                if (AdminService.UpdatePassword(token, obj.Password))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { message = "Password Changed successfully", status = 4 });
+                }
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
             }
             catch (Exception ex)

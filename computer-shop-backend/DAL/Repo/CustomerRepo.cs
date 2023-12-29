@@ -8,29 +8,37 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    public class CustomerRepo : Repo, IRepo<Customer, int, bool>
+    internal class CustomerRepo : Repo, IRepo<Customer, string, Customer>, IAuth<bool>
     {
-        public bool Create(Customer obj)
+        public bool Authenticate(string email, string password)
+        {
+            /*var data = db.Customer.FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
+            if(data != null) return true;
+            return false;*/
+            return true;
+        }
+
+        public Customer Create(Customer obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(int id)
+        public bool Delete(string id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Customer> Get()
+        public List<Customer> Read()
         {
             throw new NotImplementedException();
         }
 
-        public Customer Get(int id)
+        public Customer Read(string id)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Customer obj)
+        public Customer Update(Customer obj)
         {
             throw new NotImplementedException();
         }

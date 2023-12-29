@@ -38,14 +38,38 @@ namespace BLL.Services
             data.Otp = null;
             return mapper.Map<AdminDTO>(data);
         }
-        public static bool Update(string username) 
+        public static bool Update(AdminUpdateDTO uData, string token) 
         {
-            var data = DataAccessFactory.AdminData().Get(username);
-            if(data == null)
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            var pData = DataAccessFactory.AdminData().Get(pUsername);
+            if(pData == null)
             {
                 return false;
             }
-            return DataAccessFactory.AdminData().Update(data);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<AdminUpdateDTO, Admin>();
+            });
+            var mapper = new Mapper(config);
+            var cData = mapper.Map<Admin>(uData);
+            cData.Username = pUsername;
+            return DataAccessFactory.AdminData().Update(cData);
+        }
+        public static bool UpdatePassword(string token, string password)
+        {
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            var pData = DataAccessFactory.AdminData().Get(pUsername);
+            if (pData == null)
+            {
+                return false;
+            }
+            pData.Password = password;
+            return DataAccessFactory.AdminData().UpdatePassword(pData);
+        }
+        public static bool isCurrPassExist(string token, string password)
+        {
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            return DataAccessFactory.AdminData().Get(pUsername).Password.Equals(password);
         }
     }
 }

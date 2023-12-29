@@ -12,5 +12,6 @@ namespace DAL.Interfaces
         //List<Type> Get();
         Type Get(Username username);
         RET Update(Type obj);
+        RET UpdatePassword(Type obj);
     }
 }
