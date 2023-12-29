@@ -2,6 +2,7 @@
 using BLL.DTOs;
 using DAL;
 using DAL.EF.Models;
+using DAL.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,20 @@ namespace BLL.Services
     {
         public static bool AddProduct(ProductCreateDTO p)
         {
-            var config = new MapperConfiguration(cfg =>
+            var cloudinary = new CloudinaryService();
+            var image = cloudinary.UploadFile(p.FileData, p.FileName);
+            
+            return DataAccessFactory.ProductData().Create(new Product
             {
-                cfg.CreateMap<ProductCreateDTO, Product>();
+                Name = p.Name,
+                BrandId = p.BrandId,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                ProductPrice = p.ProductPrice,
+                CostPrice = p.CostPrice,
+                ImageUrl = image.ImageUrl,
+                PublicImageId = image.ImagePublicId,//need public id for delete image
             });
-            var mapper = new Mapper(config);
-            var cnvrt = mapper.Map<Product>(p);
-            return DataAccessFactory.ProductData().Create(cnvrt);
         }
         public static ProductCategoryBrandDTO GetAProduct(int id)
         {

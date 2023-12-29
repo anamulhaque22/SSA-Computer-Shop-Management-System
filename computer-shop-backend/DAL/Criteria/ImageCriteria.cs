@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.DTOs
+namespace DAL.Criteria
 {
-    public class ProductCategoryBrandDTO:ProductDTO
+    public class ImageCriteria
     {
-        public string CategoryName { get; set; }
-        public string BrandName { get; set; }
         public string ImageUrl { get; set; }
+        public string ImagePublicId { get; set; }
     }
 }

@@ -8,22 +8,14 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class CustomerRepo : Repo, IRepo<Customer, string, Customer>, IAuth<bool>
+    public class CustomerRepo : Repo, IRepo<Customer, int, bool>
     {
-        public bool Authenticate(string email, string password)
-        {
-            /*var data = db.Customer.FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
-            if(data != null) return true;
-            return false;*/
-            return true;
-        }
-
-        public Customer Create(Customer obj)
+        public bool Create(Customer obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -33,12 +25,12 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
-        public Customer Get(string id)
+        public Customer Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Customer Update(Customer obj)
+        public bool Update(Customer obj)
         {
             throw new NotImplementedException();
         }
