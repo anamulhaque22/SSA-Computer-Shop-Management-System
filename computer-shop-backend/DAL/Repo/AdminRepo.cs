@@ -22,10 +22,19 @@ namespace DAL.Repo
         {
             return db.Admins.Find(username);
         }
-
+        public bool UpdatePassword(Admin obj)
+        {
+            var pData = db.Admins.Find(obj.Username);
+            obj.Otp = pData.Otp;
+            db.Entry(pData).CurrentValues.SetValues(obj);
+            return db.SaveChanges() > 0;
+        }
         public bool Update(Admin obj)
         {
-            db.Entry(obj).CurrentValues.SetValues(db.Admins.Find(obj.Username));
+            var pData = db.Admins.Find(obj.Username);
+            obj.Password = pData.Password;
+            obj.Otp = pData.Otp;
+            db.Entry(pData).CurrentValues.SetValues(obj);
             return db.SaveChanges()>0;   
         }
 

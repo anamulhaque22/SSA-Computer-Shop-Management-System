@@ -14,12 +14,8 @@ namespace BLL.DTOs
         [Required]
         [StringLength(100)]
         public string Email { get; set; }
-        [Required]
-        [StringLength(148)]
-        public string Password { get; set; }
-        [Required]
-        [StringLength(148)]
-        public string cPassword { get; set; }
+
+        public string Password { get; set; } = null;
 
         [Required]
         [StringLength(50)]
