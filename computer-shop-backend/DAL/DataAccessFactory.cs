@@ -1,4 +1,5 @@
-﻿using DAL.EF.Models;
+﻿using DAL.Criteria;
+using DAL.EF.Models;
 using DAL.Interfaces;
 using DAL.Repo;
 using System;
@@ -39,6 +40,25 @@ namespace DAL
         public static IChange ChangePassData()
         {
             return new ModeratorRepo();
+        }
+
+        public static IRepo<Category, int, bool> CategoryData()
+        {
+            return new CategoryRepo();
+        }
+
+        public static IRepo<Brand, int, bool> BrandData()
+        {
+            return new BrandRepo();
+        }
+
+        public static IRepo<Product, int, bool>ProductData()
+        {
+            return new ProductRepo();
+        }
+        public static IProductRepo<ProductFilterCriteria, Product> ProductFilterData()
+        {
+            return new ProductRepo();
         }
 
     }

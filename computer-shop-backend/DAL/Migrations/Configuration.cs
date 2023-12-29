@@ -18,44 +18,16 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-
-            /*Random random = new Random();
-            for (int i = 1; i <= 10; i++)
+            /*context.Products.AddOrUpdate(new EF.Models.Product
             {
-                context.Moderators.AddOrUpdate(new EF.Models.Moderator
-                {
-                    Id = i,
-                    Ename = "Ename-" + i,
-                    Password = Guid.NewGuid().ToString().Substring(0, 5),
-                    Post = "sellesman",
-                    Email = Guid.NewGuid().ToString().Substring(0, 5),
-                    PhoneNumber = random.Next(1, 6),
-                });
-            }
-
-            for (int i = 1; i <= 20; i++)
-            {
-                context.Salaris.AddOrUpdate(new EF.Models.Salary
-                {
-                    Id = i,
-                    MonthName = Guid.NewGuid().ToString(),
-                    Date = DateTime.Now,
-                    Amount = Guid.NewGuid().ToString(),
-                    ReportedBy = random.Next(1, 6),
-                });
-            }
-
-            for (int i = 1; i <= 30; i++)
-            {
-                context.AttendanceReports.AddOrUpdate(new EF. Models.AttendanceReport
-                {
-                    Id = i,
-                    EmployeeName = Guid.NewGuid().ToString().Substring(0, 5),
-                    DateTime = DateTime.Now,
-                    MId = random.Next(1, 11),
-                });
-            }*/
-
+                CategoryId = 1,
+                BrandId= 1,
+                Name= "Corsair VENGEANCE RGB PRO 16GB (2 x 8GB) DDR4 3200MHz C16 RAM Kit Black",
+                ProductPrice= 9500,
+                CostPrice= 7500,
+                Quantity= 10,
+                Description= "The THERMALTAKE WATERRAM RGB 32GB DDR4 3600MHz CL18 (8GB X 4) Desktop RAM is a high-performance memory module designed to enhance the overall performance of your desktop computer. With a memory capacity of 32GB, it provides ample space for multitasking, gaming, and content creation. The DDR4 technology ensures faster data transfer rates and improved efficiency compared to its predecessors.\r\n\r\nOne of the standout features of this RAM is its impressive frequency of 3600MHz. This high clock speed allows for faster data processing, resulting in smoother multitasking and improved system responsiveness. Additionally, the low latency of 18-20-20-39 ensures quick access to data, reducing lag and enhancing overall performance.",
+            });*/
         }
     }
 }

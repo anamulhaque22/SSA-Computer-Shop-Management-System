@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace DAL.EF.Models
 {
-    public class Brand
+    public class ProductKey
     {
+        [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
+        [StringLength(16)]
+        public string Key { get; set; }
     }
 }
