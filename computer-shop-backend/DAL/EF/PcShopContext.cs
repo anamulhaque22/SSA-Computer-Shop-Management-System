@@ -34,6 +34,7 @@ namespace DAL.EF
         public DbSet<Admin> Admins{ get; set; }
         public DbSet<TotalRevenue> TotalRevenues { get; set; }
         public DbSet<TotalSale> TotalSales { get; set; }
+        public DbSet<AdminToken> AdminTokens { get; set; }
         //Admin
     }
 

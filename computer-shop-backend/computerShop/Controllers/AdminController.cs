@@ -1,5 +1,7 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using computerShop.Auth;
+using computerShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace computerShop.Controllers
     {
         [HttpPost]
         [Route("admin/create")]
+        [AdminLogged]
         public HttpResponseMessage Create(AdminSingupDTO obj)
         {
             try
@@ -36,6 +39,7 @@ namespace computerShop.Controllers
         }
         [HttpPost]
         [Route("admin/Get")]
+        [AdminLogged]
         public HttpResponseMessage Get(AdminDTO obj)
         {
             try
@@ -48,6 +52,27 @@ namespace computerShop.Controllers
                 else
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "No Data Found"});
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [Route("admin/login")]
+        public HttpResponseMessage Login(AdminLoginModel obj)
+        {
+            try
+            {
+                var response = AuthService.AdminAuthenticate(obj.Username, obj.Password);
+                if (response != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, response);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Invalid Credentials" });
                 }
             }
             catch (Exception ex)

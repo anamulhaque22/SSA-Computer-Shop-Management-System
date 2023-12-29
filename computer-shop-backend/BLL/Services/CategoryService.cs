@@ -14,7 +14,7 @@ namespace BLL.Services
     {
         public static CategoryDTO Get(int id)
         {
-            var data = DataAccessFactory.CategoryData().Get(id);
+            var data = DataAccessFactory.CategoryData().Read(id);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Category, CategoryDTO>();
@@ -25,7 +25,7 @@ namespace BLL.Services
         }
         public static List<CategoryDTO> Get()
         {
-            var data = DataAccessFactory.CategoryData().Get();
+            var data = DataAccessFactory.CategoryData().Read();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Category, CategoryDTO>();

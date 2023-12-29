@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class AdminRepo : Repo, IAdminRepo<Admin, string, bool>
+    internal class AdminRepo : Repo, IAdminRepo<Admin, string, bool>, IAuth<bool>
     {
+
         public bool Create(Admin obj)
         {
             db.Admins.Add(obj);
@@ -18,20 +19,25 @@ namespace DAL.Repo
         }
         public Admin GetWithoutPassword(string username)
         {
-            var data = db.Admins.Where(d => d.Username.Equals(username)).FirstOrDefault();
+            var data = db.Admins.Find(username);
             data.Password = null;
             data.Otp = null;
             return data;
         }
         public Admin Get(string username)
         {
-            return db.Admins.Where(d=>d.Username.Equals(username)).FirstOrDefault();
+            return db.Admins.Find(username);
         }
 
         public bool Update(Admin obj)
         {
             db.Entry(obj).CurrentValues.SetValues(db.Admins.Find(obj.Username));
             return db.SaveChanges()>0;   
+        }
+
+        public bool Authenticate(string username, string password)
+        {
+            return db.Admins.Where(d => d.Username.Equals(username) && d.Password.Equals(password)).Count() > 0;
         }
     }
 }

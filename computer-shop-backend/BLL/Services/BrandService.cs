@@ -14,7 +14,7 @@ namespace BLL.Services
     {
         public static BrandDTO Get(int id)
         {
-            var data = DataAccessFactory.BrandData().Get(id);
+            var data = DataAccessFactory.BrandData().Read(id);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Brand, BrandDTO>();
@@ -25,7 +25,7 @@ namespace BLL.Services
         }
         public static List<BrandDTO> Get()
         {
-            var data = DataAccessFactory.BrandData().Get();
+            var data = DataAccessFactory.BrandData().Read();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Brand, BrandDTO>();

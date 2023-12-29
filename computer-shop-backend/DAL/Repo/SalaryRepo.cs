@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class SalaryRepo : Repo, IRepos<Salary, int, bool>
+    internal class SalaryRepo : Repo, IRepo<Salary, int, bool>
     {
         public bool Create(Salary obj)
         {

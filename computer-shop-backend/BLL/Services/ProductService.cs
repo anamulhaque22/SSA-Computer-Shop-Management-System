@@ -24,7 +24,7 @@ namespace BLL.Services
         }
         public static ProductCategoryBrandDTO GetAProduct(int id)
         {
-            var data = DataAccessFactory.ProductData().Get(id);
+            var data = DataAccessFactory.ProductData().Read(id);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Product, ProductCategoryBrandDTO>();
@@ -35,7 +35,7 @@ namespace BLL.Services
         }
 
         public static List<ProductCategoryBrandDTO> GetAllProduct() {
-            var data = DataAccessFactory.ProductData().Get();
+            var data = DataAccessFactory.ProductData().Read();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Product, ProductCategoryBrandDTO>();

@@ -57,6 +57,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DTOs\AdminDTO.cs" />
     <Compile Include="DTOs\AdminSingupDTO.cs" />
+    <Compile Include="DTOs\AdminTokenDTO.cs" />
+    <Compile Include="DTOs\AdminUpdateDTO.cs" />
     <Compile Include="DTOs\AttendanceReportDTO.cs" />
     <Compile Include="DTOs\BrandDTO.cs" />
     <Compile Include="DTOs\CategoryDTO.cs" />

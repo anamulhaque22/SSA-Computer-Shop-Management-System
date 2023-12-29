@@ -55,6 +55,7 @@
     <Compile Include="Criteria\ProductFilterCriteria.cs" />
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\Models\Admin.cs" />
+    <Compile Include="EF\Models\AdminToken.cs" />
     <Compile Include="EF\Models\AttendanceReport.cs" />
     <Compile Include="EF\Models\Brand.cs" />
     <Compile Include="EF\Models\Category.cs" />
@@ -77,7 +78,6 @@
     <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Interfaces\IRepos.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
@@ -94,9 +94,14 @@
     <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.designer.cs">
       <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.cs" />
+    <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.designer.cs">
+      <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AdminRepo.cs" />
+    <Compile Include="Repo\AdminTokenRepo.cs" />
     <Compile Include="Repo\AttendanceReportRepo.cs" />
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
@@ -123,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312291426209_pictureNameNullAsDefault.resx">
       <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312291627223_AdminTokenTableCreated.resx">
+      <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

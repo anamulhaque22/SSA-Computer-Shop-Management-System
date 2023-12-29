@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class TokenRepo : Repo, IRepo<Token, string, Token>
+    internal class AdminTokenRepo : Repo, IRepo<AdminToken, string, AdminToken>
     {
-        public Token Create(Token obj)
+        public AdminToken Create(AdminToken obj)
         {
-            db.Tokens.Add(obj);
+            db.AdminTokens.Add(obj);
             if (db.SaveChanges() > 0) return obj;
             return null;
         }
@@ -22,22 +22,22 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
-        public List<Token> Read()
+        public List<AdminToken> Read()
         {
             throw new NotImplementedException();
         }
 
-        public Token Read(string email)
+        public AdminToken Read(string id)
         {
-            return db.Tokens.FirstOrDefault(t => t.Tkey.Equals(email));
+            return db.AdminTokens.FirstOrDefault(t => t.Tkey.Equals(id));
         }
 
-        public Token Update(Token obj)
+        public AdminToken Update(AdminToken obj)
         {
-            var token = Read(obj.Tkey);
-            db.Entry(token).CurrentValues.SetValues(token);
+            var adminToken = Read(obj.Tkey);
+            db.Entry(adminToken).CurrentValues.SetValues(adminToken);
             if (db.SaveChanges() > 0)
-                return token;
+                return adminToken;
             return null;
         }
     }
