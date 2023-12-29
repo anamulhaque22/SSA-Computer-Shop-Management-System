@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class TokenRepo : Repo, IRepos<Token, string, Token>
+    internal class TokenRepo : Repo, IFacade<Token, string, Token>
     {
         public Token Create(Token obj)
         {

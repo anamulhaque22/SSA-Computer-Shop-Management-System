@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IRepos<Type, ID, RET>
+    public interface IFacade<Type, ID, RET>
     {
         RET Create(Type obj);
 

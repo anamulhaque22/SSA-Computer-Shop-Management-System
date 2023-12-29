@@ -65,7 +65,7 @@
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Interfaces\IRepos.cs" />
+    <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Migrations\202312221650573_DBINIT.cs" />
     <Compile Include="Migrations\202312221650573_DBINIT.designer.cs">
       <DependentUpon>202312221650573_DBINIT.cs</DependentUpon>
