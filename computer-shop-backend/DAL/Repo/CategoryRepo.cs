@@ -27,25 +27,25 @@ namespace DAL.Repo
 
         public bool Delete(int id)
         {
-            var ex = Get(id);
+            var ex = Read(id);
             db.Categories.Remove(ex);
             return db.SaveChanges()>0;
         }
 
-        public List<Category> Get()
+        public List<Category> Read()
         {
             var data = db.Categories.ToList();
             return data;
         }
 
-        public Category Get(int id)
+        public Category Read(int id)
         {
             return db.Categories.Find(id);
         }
 
         public bool Update(Category obj)
         {
-            var ex = Get(obj.Id);
+            var ex = Read(obj.Id);
             db.Entry(ex).CurrentValues.SetValues(obj);
             return db.SaveChanges() > 0;
         }

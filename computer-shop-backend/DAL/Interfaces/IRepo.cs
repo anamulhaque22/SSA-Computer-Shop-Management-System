@@ -9,8 +9,8 @@ namespace DAL.Interfaces
     public interface IRepo<Type, ID, RET>
     {
         RET Create(Type obj);
-        List<Type> Get();
-        Type Get(ID id);
+        List<Type> Read();
+        Type Read(ID id);
         RET Update(Type obj);
         bool Delete(ID id);
     }

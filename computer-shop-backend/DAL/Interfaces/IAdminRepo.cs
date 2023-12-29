@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IRepos<Type, ID, RET>
+    public interface IAdminRepo<Type, Username, RET>
     {
         RET Create(Type obj);
-
-        List<Type> Read();
-
-        Type Read(ID id);
-
+        //List<Type> Get();
+        Type Get(Username username);
         RET Update(Type obj);
-
-        bool Delete(ID id);
-
-
-
     }
 }

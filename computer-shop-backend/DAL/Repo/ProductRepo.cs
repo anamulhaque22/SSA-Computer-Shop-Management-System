@@ -75,13 +75,13 @@ namespace DAL.Repo
             return query.ToList();
         }
 
-        public List<Product> Get()
+        public List<Product> Read()
         {
             var data = db.Products.ToList();
             return data;
         }
 
-        public Product Get(int id)
+        public Product Read(int id)
         {
             var data = db.Products.Find(id);
             return data;
@@ -89,7 +89,7 @@ namespace DAL.Repo
 
         public bool Update(Product obj)
         {
-            var ex = Get(obj.Id);
+            var ex = Read(obj.Id);
             db.Entry(ex).CurrentValues.SetValues(obj);
             return db.SaveChanges() > 0;
         }

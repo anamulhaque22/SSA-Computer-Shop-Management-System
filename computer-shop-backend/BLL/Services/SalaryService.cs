@@ -73,5 +73,20 @@ namespace BLL.Services
         {
             return DataAccessFactory.SalaryData().Delete(id);
         }
+        public static List<PieChartItemDTO> GetPieChartData()
+        {
+            var pieChartData = DataAccessFactory.SalaryData().ReadForPieChart();
+            var cfg = new MapperConfiguration(c =>
+            {
+                c.CreateMap<KeyValuePair<string, decimal>, PieChartItemDTO>()
+                    .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.Key))
+                    .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value));
+            });
+
+            var mapper = new Mapper(cfg);
+            var mapped = mapper.Map<List<PieChartItemDTO>>(pieChartData);
+            return mapped;
+        }
+
     }
 }

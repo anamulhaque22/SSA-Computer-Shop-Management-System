@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace computerShop.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class AttendanceReportController : ApiController
     {
         [HttpGet]
@@ -76,11 +78,11 @@ namespace computerShop.Controllers
                 var res = AttendanceReportService.Upadte(obj);
                 if (res)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Inserted", Data = obj });
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Update", Data = obj });
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Message = "Not Inserted", Data = obj });
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Message = "Not Update", Data = obj });
                 }
             }
             catch (Exception ex)

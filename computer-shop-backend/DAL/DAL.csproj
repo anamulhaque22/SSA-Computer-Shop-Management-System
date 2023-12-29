@@ -109,22 +109,31 @@
     <Compile Include="Criteria\ImageCriteria.cs" />
     <Compile Include="Criteria\ProductFilterCriteria.cs" />
     <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="EF\Models\Admin.cs" />
+    <Compile Include="EF\Models\AdminToken.cs" />
     <Compile Include="EF\Models\AttendanceReport.cs" />
     <Compile Include="EF\Models\Brand.cs" />
     <Compile Include="EF\Models\Category.cs" />
     <Compile Include="EF\Models\Customer.cs" />
+    <Compile Include="EF\Models\Discount.cs" />
     <Compile Include="EF\Models\Moderator.cs" />
     <Compile Include="EF\Models\Product.cs" />
+    <Compile Include="EF\Models\ProductKey.cs" />
     <Compile Include="EF\Models\Salary.cs" />
+    <Compile Include="EF\Models\Task.cs" />
     <Compile Include="EF\Models\Token.cs" />
     <Compile Include="EF\Models\Order.cs" />
     <Compile Include="EF\Models\OrderDetail.cs" />
+    <Compile Include="EF\Models\TotalRevenue.cs" />
+    <Compile Include="EF\Models\TotalSale.cs" />
     <Compile Include="EF\PcShopContext.cs" />
+    <Compile Include="Interfaces\IAdminRepo.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
+    <Compile Include="Interfaces\IFacade.cs" />
+    <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Interfaces\IRepos.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
@@ -133,12 +142,34 @@
     <Compile Include="Migrations\202312291928572_ProductImageUrl.designer.cs">
       <DependentUpon>202312291928572_ProductImageUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312290119010_AdminRelatedTablesCreated.cs" />
+    <Compile Include="Migrations\202312290119010_AdminRelatedTablesCreated.designer.cs">
+      <DependentUpon>202312290119010_AdminRelatedTablesCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312290123564_AdminTablesDefaultValueSet.cs" />
+    <Compile Include="Migrations\202312290123564_AdminTablesDefaultValueSet.designer.cs">
+      <DependentUpon>202312290123564_AdminTablesDefaultValueSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312281740345_newtable.cs" />
+    <Compile Include="Migrations\202312281740345_newtable.designer.cs">
+      <DependentUpon>202312281740345_newtable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.cs" />
+    <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.designer.cs">
+      <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.cs" />
+    <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.designer.cs">
+      <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\AdminRepo.cs" />
+    <Compile Include="Repo\AdminTokenRepo.cs" />
     <Compile Include="Repo\AttendanceReportRepo.cs" />
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
-    <Compile Include="Repo\CustomerRepo.cs" />
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\SalaryRepo.cs" />
@@ -153,9 +184,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202312222354044_InitialDb.resx">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312291928572_ProductImageUrl.resx">
-      <DependentUpon>202312291928572_ProductImageUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

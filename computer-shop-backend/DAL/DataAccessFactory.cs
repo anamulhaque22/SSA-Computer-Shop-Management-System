@@ -12,17 +12,17 @@ namespace DAL
 {
     public class DataAccessFactory
     {
-        public static IRepos<Moderator, int, bool> ModeratorData()
+        public static IFacade<Moderator, int, bool> ModeratorData()
         {
             return new ModeratorRepo();
         }
 
-        public static IRepos<Salary, int, bool> SalaryData()
+        public static IFacade<Salary, int, bool> SalaryData()
         {
             return new SalaryRepo();
         }
 
-        public static IRepos<AttendanceReport, int, bool> AttendanceReportData()
+        public static IFacade<AttendanceReport, int, bool> AttendanceReportData()
         {
             return new AttendanceReportRepo();
         }
@@ -32,9 +32,13 @@ namespace DAL
             return new ModeratorRepo();
         }
 
-        public static IRepos<Token, string, Token> TokenData()
+        public static IFacade<Token, string, Token> TokenData()
         {
             return new TokenRepo();
+        }
+        public static IRepo<AdminToken, string, AdminToken> AdminTokenData()
+        {
+            return new AdminTokenRepo();
         }
 
         public static IChange ChangePassData()
@@ -60,6 +64,17 @@ namespace DAL
         {
             return new ProductRepo();
         }
-
+        public static IAdminRepo<Admin,string,bool> AdminData() 
+        {
+            return new AdminRepo();
+        }
+        public static IProductKey<string,bool> ProductKeyData()
+        {
+            return new ProductKeyRepo();
+        }
+        public static IAuth<bool> AdminAuthData()
+        {
+            return new AdminRepo();
+        }
     }
 }
