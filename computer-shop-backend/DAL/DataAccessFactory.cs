@@ -60,6 +60,13 @@ namespace DAL
         {
             return new ProductRepo();
         }
-
+        public static IAdminRepo<Admin,string,bool> AdminData() 
+        {
+            return new AdminRepo();
+        }
+        public static IProductKey<string,bool> ProductKeyData()
+        {
+            return new ProductKeyRepo();
+        }
     }
 }

@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
-    public class AdminDTO
+    public class AdminSingupDTO
     {
-        [Key]
         [StringLength(16)]
         public string Username { get; set; }
-        public int? Otp { get; set; }
         [Required]
         [StringLength(100)]
         public string Email { get; set; }
         [Required]
         [StringLength(148)]
         public string Password { get; set; }
+        [Required]
+        [StringLength(148)]
+        public string cPassword { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -37,8 +38,9 @@ namespace BLL.DTOs
         [Required]
         [StringLength(100)]
         public string Address { get; set; }
+        public string PictureName { get; set; } = null;
         [Required]
-        [StringLength(100)]
-        public string PictureName { get; set; }
+        [StringLength(16)]
+        public string Key { get; set; }
     }
 }

@@ -38,8 +38,6 @@ namespace DAL.EF.Models
         [Required]
         [StringLength(100)]
         public string Address { get; set; }
-        [Required]
-        [StringLength (100)]
-        public string PictureName { get; set; }
+        public string PictureName { get; set; } = null;
     }
 }
