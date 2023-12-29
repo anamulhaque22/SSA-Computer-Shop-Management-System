@@ -24,7 +24,7 @@ namespace BLL.Services
         }
         public static AdminDTO Get(string username) 
         {
-            var data = DataAccessFactory.AdminData().GetWithoutPassword(username);
+            var data = DataAccessFactory.AdminData().Get(username);
             if(data == null)
             {
                 return null;
@@ -34,6 +34,8 @@ namespace BLL.Services
                 cfg.CreateMap<Admin, AdminDTO>();
             });
             var mapper = new Mapper(config);
+            data.Password = null;
+            data.Otp = null;
             return mapper.Map<AdminDTO>(data);
         }
         public static bool Update(string username) 

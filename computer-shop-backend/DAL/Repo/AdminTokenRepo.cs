@@ -29,13 +29,14 @@ namespace DAL.Repo
 
         public AdminToken Read(string id)
         {
-            return db.AdminTokens.FirstOrDefault(t => t.Tkey.Equals(id));
+            //return db.AdminTokens.FirstOrDefault(t => t.Tkey.Equals(id));
+            return db.AdminTokens.Where(d=>d.Tkey.Equals(id)).FirstOrDefault();
         }
 
         public AdminToken Update(AdminToken obj)
         {
             var adminToken = Read(obj.Tkey);
-            db.Entry(adminToken).CurrentValues.SetValues(adminToken);
+            db.Entry(adminToken).CurrentValues.SetValues(obj);
             if (db.SaveChanges() > 0)
                 return adminToken;
             return null;

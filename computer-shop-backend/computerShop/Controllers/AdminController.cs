@@ -80,6 +80,28 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+        [HttpPost]
+        [Route("admin/logout")]
+        [AdminLogged]
+        public HttpResponseMessage Logout()
+        {
+            try
+            {
+                var token = Request.Headers.Authorization?.ToString();
+                if (!string.IsNullOrEmpty(token) && AuthService.AdminLogout(token))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Logout successful" });
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = "Invalid token" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
 
         public bool confirmPassChecker(string password, string cPassword)
         {

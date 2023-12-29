@@ -17,13 +17,7 @@ namespace DAL.Repo
             db.Admins.Add(obj);
             return db.SaveChanges() > 0;
         }
-        public Admin GetWithoutPassword(string username)
-        {
-            var data = db.Admins.Find(username);
-            data.Password = null;
-            data.Otp = null;
-            return data;
-        }
+
         public Admin Get(string username)
         {
             return db.Admins.Find(username);
