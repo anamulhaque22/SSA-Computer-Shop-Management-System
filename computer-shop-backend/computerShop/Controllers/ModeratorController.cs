@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace computerShop.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class ModeratorController : ApiController
     {
         [HttpGet]
@@ -173,21 +175,6 @@ namespace computerShop.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("api/teacher/mail/{id}")]
-        public HttpResponseMessage Mail(int Id)
-        {
-            try
-            {
-
-                return Request.CreateResponse(HttpStatusCode.OK, EmailService.SendEmail(Id));
-            }
-            catch (Exception ex)
-            {
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-
-            }
-        }
+        
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class SalaryRepo : Repo, IRepos<Salary, int, bool>
+    internal class SalaryRepo : Repo, IFacade<Salary, int, bool>
     {
         public bool Create(Salary obj)
         {
@@ -43,6 +43,16 @@ namespace DAL.Repo
             if (db.SaveChanges() > 0)
                 return true;
             return false;
+        }
+
+        public Dictionary<string, decimal> ReadForPieChart()
+        {
+            return db.Salaris
+                .GroupBy(s => s.MonthName)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Sum(s => Decimal.TryParse(s.Amount, out var amount) ? amount : 0)
+                );
         }
     }
 }

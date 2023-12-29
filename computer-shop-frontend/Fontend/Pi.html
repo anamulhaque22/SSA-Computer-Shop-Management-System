@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+ 
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+ 
+        #pieChart {
+            max-width: 400px;
+            margin-top: 20px;
+        }
+ 
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+ 
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+ 
+    <script>
+        var app = angular.module("my-app", []);
+ 
+        app.controller('ModeratorSalaryCrtl', function ($scope, $http, $q) {
+            $scope.load = function () {
+                var deferred = $q.defer();
+ 
+                $http.get("https://localhost:44389/api/salary/piechart").then(function (resp) {
+                    $scope.salary = resp.data;
+                    $scope.msg = "Data loaded successfully.";
+                    $scope.showTable = true;
+ 
+                    $scope.generatePieChart();
+ 
+                    deferred.resolve();
+                }, function (err) {
+                    $scope.msg = "Error loading data.";
+                    deferred.reject();
+                });
+ 
+                return deferred.promise;
+            };
+ 
+            $scope.generatePieChart = function () {
+                var data = [30, 50, 20];
+                var ctx = document.getElementById('pieChart').getContext('2d');
+ 
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ["Label 1", "Label 2", "Label 3"],
+                        datasets: [{
+                            data: data,
+                            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                        }]
+                    }
+                });
+            };
+        });
+    </script>
+</head>
+ 
+<body ng-app="my-app">
+    <div class="container" ng-controller="ModeratorSalaryCrtl">
+        <h2>Data</h2>
+        <button ng-click="load()">Load</button>
+ 
+        <table ng-if="showTable">
+            <!-- Your existing table content -->
+        </table>
+ 
+        <p>{{msg}}</p>
+        <canvas id="pieChart"></canvas>
+    </div>
+</body>
+ 
+</html>
+ 

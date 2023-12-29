@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class TokenRepo : Repo, IRepos<Token, string, Token>
+    internal class TokenRepo : Repo, IFacade<Token, string, Token>
     {
         public Token Create(Token obj)
         {
@@ -35,10 +35,18 @@ namespace DAL.Repo
         public Token Update(Token obj)
         {
             var token = Read(obj.Tkey);
-            db.Entry(token).CurrentValues.SetValues(token);
+            db.Entry(token).CurrentValues.SetValues(obj);
             if (db.SaveChanges() > 0)
                 return token;
             return null;
+        }
+
+        public Dictionary<string, decimal> ReadForPieChart()
+
+        {
+
+            throw new NotImplementedException();
+
         }
     }
 }
