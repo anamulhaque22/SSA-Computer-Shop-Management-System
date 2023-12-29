@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    public class ModeratorRepo : Repo, IRepo<Moderator, int, bool>, IAuth<bool>, IChange
+    public class ModeratorRepo : Repo, IFacade<Moderator, int, bool>, IAuth<bool>, IChange
     {
         public bool Authenticate(string email, string password)
         {
@@ -57,6 +57,13 @@ namespace DAL.Repo
             if (db.SaveChanges() > 0)
                 return true;
             return false;
+        }
+        public Dictionary<string, decimal> ReadForPieChart()
+
+        {
+
+            throw new NotImplementedException();
+
         }
     }
 }

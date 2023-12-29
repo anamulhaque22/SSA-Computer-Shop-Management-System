@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="my-app">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+ 
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+ 
+        form {
+            margin-top: 20px;
+        }
+ 
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+ 
+        button {
+            width: 48%;
+            padding: 10px;
+            margin: 0 1%;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+ 
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+ 
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+ 
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+ 
+        canvas {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+ 
+        .dashboard-container {
+            max-width: 800px; /* Increase max-width for better spacing */
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+ 
+        .dashboard-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+ 
+        .dashboard-buttons button {
+            width: 48%;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+ 
+    <!-- Include your scripts here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+    <!-- Include your Angular scripts here -->
+    <script>
+        var app = angular.module("my-app", []);
+ 
+        app.factory('interceptor', [function () {
+            var interceptor = {
+                request: function (config) {
+                    config.headers.Authorization = localStorage.getItem("tkey");
+                    return config;
+                },
+                response: function (response) {
+                    return response;
+                }
+            };
+ 
+            return interceptor;
+        }]);
+ 
+        app.config(function ($httpProvider) {
+            $httpProvider.interceptors.push('interceptor');
+        });
+ 
+        app.controller('loginCtrl', function ($scope, $http) {
+            $scope.login = function () {
+                var v = $scope.l;
+                $http.post("https://localhost:44389/api/login", v).then(function (resp) {
+                    localStorage.setItem("tkey", resp.data.Tkey);
+                }, function (err) {
+ 
+                });
+            };
+        });
+ 
+        app.controller('DashboardCtrl', function ($scope, $http, $q) {
+            $scope.showTable = false;
+            $scope.showPieChart = false;
+ 
+            $scope.loadTable = function () {
+                $http.get("https://localhost:44389/api/Moderator").then(function (resp) {
+                    $scope.Moderator = resp.data;
+                    $scope.msg = "Data loaded successfully.";
+                    $scope.showTable = true;
+                    $scope.showPieChart = false;
+                }, function (err) {
+                    $scope.msg = "Error loading data.";
+                });
+            };
+ 
+            $scope.loadPieChart = function () {
+                $http.get("https://localhost:44389/api/salary/piechart").then(function (resp) {
+                    $scope.salary = resp.data;
+                    $scope.msg = "Data loaded successfully.";
+                    $scope.showTable = false;
+                    $scope.showPieChart = true;
+                    $scope.generatePieChart();
+                }, function (err) {
+                    $scope.msg = "Error loading data.";
+                });
+            };
+ 
+            $scope.generatePieChart = function () {
+                var data = [30, 50, 20];
+                var ctx = document.getElementById('pieChart').getContext('2d');
+ 
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ["Label 1", "Label 2", "Label 3"],
+                        datasets: [{
+                            data: data,
+                            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                        }]
+                    }
+                });
+            };
+        });
+    </script>
+</head>
+ 
+<body>
+    <div class="container" ng-controller="loginCtrl">
+        <h2>Login</h2>
+        <form ng-submit="login()">
+            <input type="text" ng-model="l.Email" placeholder="Email" required><br>
+            <input type="password" ng-model="l.Password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+ 
+    <div class="dashboard-container container" ng-controller="DashboardCtrl">
+        <h2>Dashboard</h2>
+        <div class="dashboard-buttons">
+            <button ng-click="loadTable()" class="btn btn-primary">View Moderated Table</button>
+            <button ng-click="loadPieChart()" class="btn btn-success">View Pie Chart</button>
+        </div>
+ 
+        <table ng-if="showTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ename</th>
+                    <th>Password</th>
+                    <th>Post</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="s in Moderator">
+                    <td>{{s.Id}}</td>
+                    <td>{{s.Ename}}</td>
+                    <td>{{s.Password}}</td>
+                    <td>{{s.Post}}</td>
+                    <td>{{s.Email}}</td>
+                    <td>{{s.PhoneNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+ 
+        <p>{{msg}}</p>
+        <canvas id="pieChart" ng-if="showPieChart"></canvas>
+    </div>
+</body>
+ 
+</html>

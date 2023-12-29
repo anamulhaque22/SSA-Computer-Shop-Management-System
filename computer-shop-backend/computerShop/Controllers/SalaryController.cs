@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace computerShop.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class SalaryController : ApiController
     {
         [HttpGet]
@@ -113,6 +115,21 @@ namespace computerShop.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
 
+            }
+        }
+
+        [HttpGet]
+        [Route("api/salary/piechart")]
+        public HttpResponseMessage GetPieChartData()
+        {
+            try
+            {
+                var pieChartData = SalaryService.GetPieChartData();
+                return Request.CreateResponse(HttpStatusCode.OK, pieChartData);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Message = ex.Message });
             }
         }
     }

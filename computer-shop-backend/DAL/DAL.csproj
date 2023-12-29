@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\IAdminRepo.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
+    <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
@@ -90,6 +91,10 @@
     <Compile Include="Migrations\202312290123564_AdminTablesDefaultValueSet.designer.cs">
       <DependentUpon>202312290123564_AdminTablesDefaultValueSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312281740345_newtable.cs" />
+    <Compile Include="Migrations\202312281740345_newtable.designer.cs">
+      <DependentUpon>202312281740345_newtable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.cs" />
     <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.designer.cs">
       <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
@@ -99,6 +104,7 @@
       <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AdminRepo.cs" />
     <Compile Include="Repo\AdminTokenRepo.cs" />
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312290123564_AdminTablesDefaultValueSet.resx">
       <DependentUpon>202312290123564_AdminTablesDefaultValueSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312281740345_newtable.resx">
+      <DependentUpon>202312281740345_newtable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312291426209_pictureNameNullAsDefault.resx">
       <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>

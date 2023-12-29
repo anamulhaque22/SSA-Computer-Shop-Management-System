@@ -12,17 +12,17 @@ namespace DAL
 {
     public class DataAccessFactory
     {
-        public static IRepo<Moderator, int, bool> ModeratorData()
+        public static IFacade<Moderator, int, bool> ModeratorData()
         {
             return new ModeratorRepo();
         }
 
-        public static IRepo<Salary, int, bool> SalaryData()
+        public static IFacade<Salary, int, bool> SalaryData()
         {
             return new SalaryRepo();
         }
 
-        public static IRepo<AttendanceReport, int, bool> AttendanceReportData()
+        public static IFacade<AttendanceReport, int, bool> AttendanceReportData()
         {
             return new AttendanceReportRepo();
         }
@@ -32,7 +32,7 @@ namespace DAL
             return new ModeratorRepo();
         }
 
-        public static IRepo<Token, string, Token> TokenData()
+        public static IFacade<Token, string, Token> TokenData()
         {
             return new TokenRepo();
         }
