@@ -104,5 +104,75 @@ namespace BLL.Services
             }
             return DataAccessFactory.UpdateTotalSale().Update(pData);
         }
+        public static bool CalculateAndSaveSales(int OrderId)
+        {
+            List<OrderDetail> orderDetails = null; //this line will be removed.
+            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
+            int sales = 0;
+            foreach (var orderDetail in orderDetails)
+            {
+                sales += orderDetail.UnitPrice;
+            }
+            int currentYear = DateTime.Now.Year;
+            var currSaleData = DataAccessFactory.TotalSaleData().Get(currentYear);
+            if (currSaleData == null)
+            {
+                TotalSale totalSale = new TotalSale();
+                totalSale.Year = currentYear;
+                DataAccessFactory.TotalSaleData().Create(totalSale);
+            }
+            int currentMonth = DateTime.Now.Month;
+            currSaleData.Year = currentYear;
+
+            if (currentMonth == 1)
+            {
+                currSaleData.Jan += sales;
+            }
+            else if (currentMonth == 2)
+            {
+                currSaleData.Feb += sales;
+            }
+            else if (currentMonth == 3)
+            {
+                currSaleData.Mar += sales;
+            }
+            else if (currentMonth == 4)
+            {
+                currSaleData.Apr += sales;
+            }
+            else if (currentMonth == 5)
+            {
+                currSaleData.May += sales;
+            }
+            else if (currentMonth == 6)
+            {
+                currSaleData.Jun += sales;
+            }
+            else if (currentMonth == 7)
+            {
+                currSaleData.Jul += sales;
+            }
+            else if (currentMonth == 8)
+            {
+                currSaleData.Aug += sales;
+            }
+            else if (currentMonth == 9)
+            {
+                currSaleData.Sep += sales;
+            }   
+            else if (currentMonth == 10)
+            {
+                currSaleData.Oct += sales;
+            }
+            else if (currentMonth == 11)
+            {
+                currSaleData.Nov += sales;
+            }
+            else if (currentMonth == 12)
+            {
+                currSaleData.Dec += sales;
+            }
+            return DataAccessFactory.UpdateTotalSale().Update(currSaleData);
+        }
     }
 }

@@ -103,5 +103,75 @@ namespace BLL.Services
             }
             return DataAccessFactory.UpdateTotalRevenue().Update(pData);
         }
+        public static bool CalculateAndSaveRevenue(int OrderId)
+        {
+            List<OrderDetail> orderDetails = null; //this line will be removed.
+            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
+            int profit = 0;
+            foreach (var orderDetail in orderDetails)
+            {
+                profit += (orderDetail.UnitPrice - orderDetail.UnitCostPrice);
+            }
+            int currentYear = DateTime.Now.Year;
+            var currRevData = DataAccessFactory.TotalRevenueData().Get(currentYear);
+            if (currRevData == null)
+            {
+                TotalRevenue totalRevenue = new TotalRevenue();
+                totalRevenue.Year = currentYear;
+                DataAccessFactory.TotalRevenueData().Create(totalRevenue);
+            }
+            int currentMonth = DateTime.Now.Month;
+            currRevData.Year = currentYear;
+
+            if (currentMonth == 1)
+            {
+                currRevData.Jan += profit;
+            }
+            else if (currentMonth == 2)
+            {
+                currRevData.Feb += profit;
+            }
+            else if (currentMonth == 3)
+            {
+                currRevData.Mar += profit;
+            }
+            else if (currentMonth == 4)
+            {
+                currRevData.Apr += profit;
+            }
+            else if (currentMonth == 5)
+            {
+                currRevData.May += profit;
+            }
+            else if (currentMonth == 6)
+            {
+                currRevData.Jun += profit;
+            }
+            else if (currentMonth == 7)
+            {
+                currRevData.Jul += profit;
+            }
+            else if (currentMonth == 8)
+            {
+                currRevData.Aug += profit;
+            }
+            else if (currentMonth == 9)
+            {
+                currRevData.Sep += profit;
+            }
+            else if (currentMonth == 10)
+            {
+                currRevData.Oct += profit;
+            }
+            else if (currentMonth == 11)
+            {
+                currRevData.Nov += profit;
+            }
+            else if (currentMonth == 12)
+            {
+                currRevData.Dec += profit;
+            }
+            return DataAccessFactory.UpdateTotalRevenue().Update(currRevData);
+        }
     }
 }
