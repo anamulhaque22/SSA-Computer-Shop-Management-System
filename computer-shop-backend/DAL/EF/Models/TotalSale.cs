@@ -12,6 +12,8 @@ namespace DAL.EF.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
+        public int Year { get; set; }
         [DefaultValue(0)]
         public int Jan { get; set; } = 0;
         [DefaultValue(0)]

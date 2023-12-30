@@ -81,6 +81,7 @@
     <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Interfaces\ITotalRevenue.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
@@ -109,6 +110,10 @@
     <Compile Include="Migrations\202312301323536_FixedDiscountAndTaskTable.designer.cs">
       <DependentUpon>202312301323536_FixedDiscountAndTaskTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs" />
+    <Compile Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.designer.cs">
+      <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +130,7 @@
     <Compile Include="Repo\TaskRepo.cs" />
     <Compile Include="Repo\TokenRepo.cs" />
     <Compile Include="Repo\ProductRepo.cs" />
+    <Compile Include="Repo\TotalRevenuesRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312301323536_FixedDiscountAndTaskTable.resx">
       <DependentUpon>202312301323536_FixedDiscountAndTaskTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.resx">
+      <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

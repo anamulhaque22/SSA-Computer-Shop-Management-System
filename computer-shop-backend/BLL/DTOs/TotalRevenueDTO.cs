@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
@@ -13,6 +12,8 @@ namespace BLL.DTOs
         [Key]
         public int Id { get; set; }
         [DefaultValue(0)]
+        [Required]
+        public int Year { get; set; }
         public int Jan { get; set; } = 0;
         [DefaultValue(0)]
         public int Feb { get; set; } = 0;

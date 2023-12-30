@@ -87,5 +87,13 @@ namespace DAL
         {
             return new TaskRepo();
         }
+        public static IAdminTools<TotalRevenue,int,bool> TotalRevenueData()
+        {
+            return new TotalRevenuesRepo();
+        }
+        public static ITotalRevenue<TotalRevenue,bool> UpdateTotalRevenue()
+        {
+            return new TotalRevenuesRepo();
+        }
     }
 }
