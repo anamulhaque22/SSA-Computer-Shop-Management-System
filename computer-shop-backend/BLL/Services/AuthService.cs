@@ -59,7 +59,30 @@ namespace BLL.Services
             }
             return null;
         }
+        public static CustomerTokenDTO CustomerAuthenticate(string email, string password)
+        {
+            var result = DataAccessFactory.CustomerAuthData().Authenticate(email, password);
+            if (result)
+            {
+                var token = new CustomerToken();
+                token.Email = email;
+                token.CreatedAt = DateTime.Now;
+                token.Tkey = Guid.NewGuid().ToString();
+                var tokenCreated = DataAccessFactory.CustomerTokenData().Create(token);
+                if(tokenCreated != null)
+                {
+                    return new CustomerTokenDTO
+                    {
+                        Email = tokenCreated.Email,
+                        CreatedAt = tokenCreated.CreatedAt,
+                        DeletedAt = tokenCreated.DeletedAt,
+                        Tkey = tokenCreated.Tkey,
+                    };
+                }
+            }
+            return null;
 
+        }
         public static bool IsTokenVaild(string tkey)
         {
             var extk = DataAccessFactory.TokenData().Read(tkey);

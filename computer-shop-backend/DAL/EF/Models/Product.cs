@@ -28,6 +28,13 @@ namespace DAL.EF.Models
         public int Quantity { get; set; }
 
         [Required]
+        public string ImageUrl { get; set; }
+        [Required]
+        public string PublicImageId { get; set; }
+
+
+
+        [Required]
         [Column(TypeName ="text")]
         public string Description { get; set; }
 

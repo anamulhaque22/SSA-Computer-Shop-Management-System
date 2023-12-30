@@ -22,6 +22,7 @@ namespace DAL.EF.Models
         public string Phone { get; set; }
 
         [Required]
+        [MinLength(6)]
         public string password { get; set; }
 
         [Required]
