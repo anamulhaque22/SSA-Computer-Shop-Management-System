@@ -13,6 +13,8 @@ namespace DAL.EF
         //operation department
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerToken> CustomerTokens { get; set; }
+        public DbSet<CustomerProfit> CustomerProfits { get; set; }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Product> Products { get; set; }

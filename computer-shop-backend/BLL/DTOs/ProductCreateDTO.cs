@@ -9,7 +9,7 @@ namespace BLL.DTOs
 {
     public class ProductCreateDTO:ProductDTO
     {
-        public decimal CostPrice { get; set; }
+        public int CostPrice { get; set; }
         public string FileName { get; set; }
         public Stream FileData { get; set; }
     }

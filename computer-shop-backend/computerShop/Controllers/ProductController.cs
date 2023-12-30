@@ -52,7 +52,7 @@ namespace computerShop.Controllers
                     
                     // Example: if(key == "ProductName") productCreateDTO.ProductName = value;
                     if(key == "Name") productCreateDTO.Name = value;
-                    if(key == "ProductPrice") productCreateDTO.ProductPrice = Convert.ToDecimal(value);
+                    if(key == "ProductPrice") productCreateDTO.ProductPrice = Convert.ToInt16(value);
                     if (key == "Quantity") productCreateDTO.Quantity = Convert.ToInt16(value);
                     if (key == "Description") productCreateDTO.Description = value;
                     if (key == "CategoryId") productCreateDTO.CategoryId = Convert.ToInt16(value);

@@ -116,6 +116,7 @@
     <Compile Include="EF\Models\Category.cs" />
     <Compile Include="EF\Models\Customer.cs" />
     <Compile Include="EF\Models\CustomerToken.cs" />
+    <Compile Include="EF\Models\CustomerProfit.cs" />
     <Compile Include="EF\Models\Discount.cs" />
     <Compile Include="EF\Models\Moderator.cs" />
     <Compile Include="EF\Models\Product.cs" />
@@ -183,9 +184,18 @@
     <Compile Include="Migrations\202312301645127_CustomerToken.designer.cs">
       <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202312301938242_UpdatedTable1.cs" />
-    <Compile Include="Migrations\202312301938242_UpdatedTable1.designer.cs">
-      <DependentUpon>202312301938242_UpdatedTable1.cs</DependentUpon>
+    
+    <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
+    <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
+      <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
+    <Compile Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
+      <DependentUpon>202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs" />
+    <Compile Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.designer.cs">
+      <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
@@ -244,8 +254,15 @@
     <EmbeddedResource Include="Migrations\202312301645127_CustomerToken.resx">
       <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301938242_UpdatedTable1.resx">
-      <DependentUpon>202312301938242_UpdatedTable1.cs</DependentUpon>
+    
+    <EmbeddedResource Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
+      <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
+      <DependentUpon>202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.resx">
+      <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

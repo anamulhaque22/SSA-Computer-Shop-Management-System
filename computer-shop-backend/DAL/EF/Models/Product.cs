@@ -17,12 +17,10 @@ namespace DAL.EF.Models
         public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal")]
-        public decimal ProductPrice { get; set; }
+        public int ProductPrice { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal")]
-        public decimal CostPrice { get; set; }
+        public int CostPrice { get; set; }
 
         [Required]
         public int Quantity { get; set; }
