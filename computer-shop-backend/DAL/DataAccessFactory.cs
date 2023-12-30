@@ -76,5 +76,9 @@ namespace DAL
         {
             return new AdminRepo();
         }
+        public static IDiscount<Discount, int, bool> DiscountData()
+        {
+            return new DiscountRepo();
+        }
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BrandService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModeratorService.cs" />
     <Compile Include="Services\ProductKeyService.cs" />

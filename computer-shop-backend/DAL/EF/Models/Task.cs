@@ -12,11 +12,8 @@ namespace DAL.EF.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(12)]
-        public string Coupon { get; set; }
+        public string Description { get; set; }
         [Required]
-        public int Amount { get; set; }
-        [Required]
-        public DateTime ExpireTime { get; set; }
+        public DateTime Time { get; set; }
     }
 }

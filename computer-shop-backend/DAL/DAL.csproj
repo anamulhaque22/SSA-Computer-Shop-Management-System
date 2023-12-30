@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\IAdminRepo.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
+    <Compile Include="Interfaces\IDiscount.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
@@ -103,6 +104,10 @@
     <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.designer.cs">
       <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312301323536_FixedDiscountAndTaskTable.cs" />
+    <Compile Include="Migrations\202312301323536_FixedDiscountAndTaskTable.designer.cs">
+      <DependentUpon>202312301323536_FixedDiscountAndTaskTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +116,7 @@
     <Compile Include="Repo\AttendanceReportRepo.cs" />
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
+    <Compile Include="Repo\DiscountRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312291627223_AdminTokenTableCreated.resx">
       <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301323536_FixedDiscountAndTaskTable.resx">
+      <DependentUpon>202312301323536_FixedDiscountAndTaskTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
