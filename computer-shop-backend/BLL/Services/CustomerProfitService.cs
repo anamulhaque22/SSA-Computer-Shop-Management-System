@@ -77,5 +77,9 @@ namespace BLL.Services
             currData.TotalProfit += profit;
             return DataAccessFactory.TopCustomersData().Update(currData);
         }
+        public static int GetActiveCustomerCount()
+        {
+            return DataAccessFactory.CustomerProfitData().Get().Count();
+        }
     }
 }

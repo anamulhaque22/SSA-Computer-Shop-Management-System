@@ -45,6 +45,20 @@ namespace computerShop.Controllers
             }
         }
         [HttpPost]
+        [Route("customer/profit/getActiveCustomerCount")]
+        [AdminLogged]
+        public HttpResponseMessage GetActiveCustomerCount()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new { count = CustomerProfitService.GetActiveCustomerCount() });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
         [Route("customer/profit/getAll")]
         [AdminLogged]
         public HttpResponseMessage GetAll()
