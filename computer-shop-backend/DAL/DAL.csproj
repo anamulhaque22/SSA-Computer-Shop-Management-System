@@ -193,6 +193,14 @@
     <Compile Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.designer.cs">
       <DependentUpon>202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312302315381_SoldCountAddedInProductTable.cs" />
+    <Compile Include="Migrations\202312302315381_SoldCountAddedInProductTable.designer.cs">
+      <DependentUpon>202312302315381_SoldCountAddedInProductTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs" />
+    <Compile Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.designer.cs">
+      <DependentUpon>202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -259,6 +267,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.resx">
       <DependentUpon>202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312302315381_SoldCountAddedInProductTable.resx">
+      <DependentUpon>202312302315381_SoldCountAddedInProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.resx">
+      <DependentUpon>202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

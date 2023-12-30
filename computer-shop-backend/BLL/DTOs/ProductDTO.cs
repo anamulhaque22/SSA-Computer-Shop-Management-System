@@ -19,5 +19,6 @@ namespace BLL.DTOs
 
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
+        public int SoldCount { get; set; } =0;
     }
 }

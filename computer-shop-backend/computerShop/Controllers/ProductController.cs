@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using computerShop.Auth;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -144,6 +145,20 @@ namespace computerShop.Controllers
                 if (result == true) return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Product is updated successfully." });
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = "Failed!" });
 
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [Route("mostSoldProduct")]
+        [AdminLogged]
+        public HttpResponseMessage GetMostSoldProduct()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, ProductService.GetMostSoldProduct());
             }
             catch (Exception ex)
             {

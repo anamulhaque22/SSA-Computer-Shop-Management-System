@@ -30,14 +30,14 @@ namespace DAL.EF.Models
         [Required]
         public string PublicImageId { get; set; }
 
-
-
         [Required]
         [Column(TypeName ="text")]
         public string Description { get; set; }
 
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
+
+        public int SoldCount { get; set; } = 0;
 
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }

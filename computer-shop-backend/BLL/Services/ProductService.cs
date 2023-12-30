@@ -91,5 +91,31 @@ namespace BLL.Services
         {
             return DataAccessFactory.ProductData().Delete(id);
         }
+        public static bool SaveProductSoldCount(int OrderId) //Have to call this method when Inventory Manager will approve order.
+        {
+            List<OrderDetail> orderDetails = null; //this line will be removed.
+            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
+            bool flag = true;
+            foreach (var orderDetail in orderDetails)
+            {
+                var data = DataAccessFactory.ProductData().Read(orderDetail.ProductId);
+                data.SoldCount += orderDetail.Quantity;
+                if (!DataAccessFactory.ProductData().Update(data))
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+        public static ProductDTO GetMostSoldProduct() 
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Product, ProductDTO>();
+            });
+            var mapper = new Mapper(config);
+            return mapper.Map<ProductDTO>(DataAccessFactory.ProductData().Read().OrderByDescending(p => p.SoldCount).First());
+        }
     }
 }
