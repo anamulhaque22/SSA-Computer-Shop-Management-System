@@ -115,6 +115,7 @@
     <Compile Include="EF\Models\Brand.cs" />
     <Compile Include="EF\Models\Category.cs" />
     <Compile Include="EF\Models\Customer.cs" />
+    <Compile Include="EF\Models\CustomerToken.cs" />
     <Compile Include="EF\Models\Discount.cs" />
     <Compile Include="EF\Models\Moderator.cs" />
     <Compile Include="EF\Models\Product.cs" />
@@ -162,6 +163,14 @@
     <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.designer.cs">
       <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312301531394_CustomerPasswordLength.cs" />
+    <Compile Include="Migrations\202312301531394_CustomerPasswordLength.designer.cs">
+      <DependentUpon>202312301531394_CustomerPasswordLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312301645127_CustomerToken.cs" />
+    <Compile Include="Migrations\202312301645127_CustomerToken.designer.cs">
+      <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +180,7 @@
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />
+    <Compile Include="Repo\CustomerTokenRepo.cs" />
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\SalaryRepo.cs" />
@@ -186,6 +196,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202312222354044_InitialDb.resx">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312290119010_AdminRelatedTablesCreated.resx">
+      <DependentUpon>202312290119010_AdminRelatedTablesCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312290123564_AdminTablesDefaultValueSet.resx">
+      <DependentUpon>202312290123564_AdminTablesDefaultValueSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312281740345_newtable.resx">
+      <DependentUpon>202312281740345_newtable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312291426209_pictureNameNullAsDefault.resx">
+      <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312291627223_AdminTokenTableCreated.resx">
+      <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301531394_CustomerPasswordLength.resx">
+      <DependentUpon>202312301531394_CustomerPasswordLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301645127_CustomerToken.resx">
+      <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

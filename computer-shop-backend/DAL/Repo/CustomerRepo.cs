@@ -8,39 +8,53 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class CustomerRepo : Repo, IRepo<Customer, string, Customer>, IAuth<bool>
+    internal class CustomerRepo : Repo, IRepo<Customer, int, Customer>, IAuth<bool>
     {
         public bool Authenticate(string email, string password)
         {
-            /*var data = db.Customer.FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
+            var data = db.Customers.FirstOrDefault(u => u.Email.Equals(email) && u.password.Equals(password));
             if(data != null) return true;
-            return false;*/
-            return true;
+            return false;
         }
 
         public Customer Create(Customer obj)
         {
-            throw new NotImplementedException();
+            db.Customers.Add(obj);
+            
+            return db.SaveChanges()>0 ? obj : null ;
         }
 
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var data = Read(id);
+            if(data != null)
+            {
+                db.Customers.Remove(data);
+                return db.SaveChanges() > 0;
+            };
+            return false;
         }
 
         public List<Customer> Read()
         {
-            throw new NotImplementedException();
+            return db.Customers.ToList();
         }
 
-        public Customer Read(string id)
+        public Customer Read(int id)
         {
-            throw new NotImplementedException();
+            return db.Customers.Find(id);
         }
 
         public Customer Update(Customer obj)
         {
-            throw new NotImplementedException();
+            var ex = Read(obj.Id);
+            if(ex != null)
+            {
+                ex.Address = obj.Address;
+                ex.Name = obj.Name;
+                ex.Phone = obj.Phone;
+            }
+            return db.SaveChanges() >0? ex : null;
         }
     }
 }

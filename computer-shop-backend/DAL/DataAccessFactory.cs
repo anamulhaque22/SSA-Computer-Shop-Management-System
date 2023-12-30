@@ -36,16 +36,28 @@ namespace DAL
         {
             return new TokenRepo();
         }
-        public static IRepo<AdminToken, string, AdminToken> AdminTokenData()
-        {
-            return new AdminTokenRepo();
-        }
 
         public static IChange ChangePassData()
         {
             return new ModeratorRepo();
         }
+        public static IRepo<AdminToken, string, AdminToken> AdminTokenData()
+        {
+            return new AdminTokenRepo();
+        }
 
+        public static IRepo<Customer, int, Customer> CustomerData()
+        {
+            return new CustomerRepo();
+        }
+        public static IAuth<bool> CustomerAuthData()
+        {
+            return new CustomerRepo();
+        }
+        public static IRepo<CustomerToken, string, CustomerToken> CustomerTokenData()
+        {
+            return new CustomerTokenRepo();
+        }
         public static IRepo<Category, int, bool> CategoryData()
         {
             return new CategoryRepo();
@@ -76,5 +88,6 @@ namespace DAL
         {
             return new AdminRepo();
         }
+        
     }
 }

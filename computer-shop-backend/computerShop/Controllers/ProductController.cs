@@ -57,7 +57,6 @@ namespace computerShop.Controllers
                     if (key == "Description") productCreateDTO.Description = value;
                     if (key == "CategoryId") productCreateDTO.CategoryId = Convert.ToInt16(value);
                     if (key == "BrandId") productCreateDTO.BrandId = Convert.ToInt16(value);
-                    
                     if (key == "CostPrice") productCreateDTO.CostPrice = Convert.ToInt16(value);
 
                 }
