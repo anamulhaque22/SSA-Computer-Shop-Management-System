@@ -89,6 +89,7 @@
     <Compile Include="Services\ProductKeyService.cs" />
     <Compile Include="Services\SalaryService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -83,6 +82,10 @@ namespace DAL
         public static IDiscount<int, string> DiscountChecker()
         {
             return new DiscountRepo();
+        }
+        public static IAdminTools<Task, int, bool> TaskData()
+        {
+            return new TaskRepo();
         }
     }
 }

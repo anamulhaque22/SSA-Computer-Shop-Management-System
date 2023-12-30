@@ -122,6 +122,7 @@
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\SalaryRepo.cs" />
+    <Compile Include="Repo\TaskRepo.cs" />
     <Compile Include="Repo\TokenRepo.cs" />
     <Compile Include="Repo\ProductRepo.cs" />
   </ItemGroup>
