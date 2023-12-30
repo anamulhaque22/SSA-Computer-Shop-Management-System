@@ -91,6 +91,7 @@
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\TaskService.cs" />
     <Compile Include="Services\TotalRevenuesService.cs" />
+    <Compile Include="Services\TotalSaleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

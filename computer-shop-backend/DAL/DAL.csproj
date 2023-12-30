@@ -82,6 +82,7 @@
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Interfaces\ITotalRevenue.cs" />
+    <Compile Include="Interfaces\ITotalSales.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
@@ -131,6 +132,7 @@
     <Compile Include="Repo\TokenRepo.cs" />
     <Compile Include="Repo\ProductRepo.cs" />
     <Compile Include="Repo\TotalRevenuesRepo.cs" />
+    <Compile Include="Repo\TotalSaleRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

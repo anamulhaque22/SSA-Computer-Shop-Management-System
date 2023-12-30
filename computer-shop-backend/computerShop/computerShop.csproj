@@ -133,6 +133,7 @@
     <Compile Include="Controllers\SalaryController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TotalRevenueController.cs" />
+    <Compile Include="Controllers\TotalSaleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
-using DAL;
 using DAL.EF.Models;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,58 +10,59 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class TotalRevenuesService
+    public class TotalSaleService
     {
-        public static bool Create(TotalRevenueDTO data)
+        public static bool Create(TotalSaleDTO data)
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<TotalRevenueDTO, TotalRevenue>();
+                cfg.CreateMap<TotalSaleDTO, TotalSale>();
             });
             var mapper = new Mapper(config);
-            var cData = mapper.Map<TotalRevenue>(data);
-            return DataAccessFactory.TotalRevenueData().Create(cData);
+            var cData = mapper.Map<TotalSale>(data);
+            return DataAccessFactory.TotalSaleData().Create(cData);
         }
         public static bool Delete(int Year)
         {
-            return DataAccessFactory.TotalRevenueData().Delete(Year);
+            return DataAccessFactory.TotalSaleData().Delete(Year);
         }
-        public static List<TotalRevenueDTO> Get()
+        public static List<TotalSaleDTO> Get()
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<TotalRevenue, TotalRevenueDTO>();
+                cfg.CreateMap<TotalSale, TotalSaleDTO>();
             });
             var mapper = new Mapper(config);
-            var data = DataAccessFactory.TotalRevenueData().Get();
-            var cData = mapper.Map<List<TotalRevenueDTO>>(data);
+            var data = DataAccessFactory.TotalSaleData().Get();
+            var cData = mapper.Map<List<TotalSaleDTO>>(data);
             return cData;
         }
-        public static TotalRevenueDTO Get(int Year)
+        public static TotalSaleDTO Get(int Year)
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<TotalRevenue, TotalRevenueDTO>();
+                cfg.CreateMap<TotalSale, TotalSaleDTO>();
             });
             var mapper = new Mapper(config);
-            return mapper.Map<TotalRevenueDTO>(DataAccessFactory.TotalRevenueData().Get(Year));
+            return mapper.Map<TotalSaleDTO>(DataAccessFactory.TotalSaleData().Get(Year));
         }
-        public static bool Update(TotalRevenueDTO obj)
+        public static bool Update(TotalSaleDTO obj)
         {
-            var pData = DataAccessFactory.TotalRevenueData().Get(obj.Year);
-            if (pData == null) { return false; }
+            var pData = DataAccessFactory.TotalSaleData().Get(obj.Year);
+            if(pData == null) { return false; }
+
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<TotalRevenueDTO, TotalRevenue>();
+                cfg.CreateMap<TotalSaleDTO, TotalSale>();
             });
             var mapper = new Mapper(config);
-            var cData = mapper.Map<TotalRevenue>(obj);
+            var cData = mapper.Map<TotalSale>(obj);
 
             if (cData.Jan != 0)
             {
                 pData.Jan = cData.Jan;
             }
-            else if(cData.Feb != 0)
+            else if (cData.Feb != 0)
             {
                 pData.Feb = cData.Feb;
             }
@@ -77,7 +78,7 @@ namespace BLL.Services
             {
                 pData.May = cData.May;
             }
-            else if (cData.Jun!= 0)
+            else if (cData.Jun != 0)
             {
                 pData.Jun = cData.Jun;
             }
@@ -97,11 +98,11 @@ namespace BLL.Services
             {
                 pData.Nov = cData.Nov;
             }
-            else if (cData.Dec!= 0)
+            else if (cData.Dec != 0)
             {
                 pData.Dec = cData.Dec;
             }
-            return DataAccessFactory.UpdateTotalRevenue().Update(pData);
+            return DataAccessFactory.UpdateTotalSale().Update(pData);
         }
     }
 }

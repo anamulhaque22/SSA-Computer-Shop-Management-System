@@ -95,5 +95,13 @@ namespace DAL
         {
             return new TotalRevenuesRepo();
         }
+        public static IAdminTools<TotalSale, int, bool> TotalSaleData()
+        {
+            return new TotalSaleRepo();
+        }
+        public static ITotalSales<TotalSale, bool> UpdateTotalSale()
+        {
+            return new TotalSaleRepo();
+        }
     }
 }
