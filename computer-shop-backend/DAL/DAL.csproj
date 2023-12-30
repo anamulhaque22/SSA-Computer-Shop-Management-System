@@ -60,6 +60,7 @@
     <Compile Include="EF\Models\Brand.cs" />
     <Compile Include="EF\Models\Category.cs" />
     <Compile Include="EF\Models\Customer.cs" />
+    <Compile Include="EF\Models\CustomerProfit.cs" />
     <Compile Include="EF\Models\Discount.cs" />
     <Compile Include="EF\Models\Moderator.cs" />
     <Compile Include="EF\Models\Product.cs" />
@@ -115,6 +116,14 @@
     <Compile Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.designer.cs">
       <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
+    <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
+      <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
+    <Compile Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
+      <DependentUpon>202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,6 +171,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.resx">
       <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
+      <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
+      <DependentUpon>202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

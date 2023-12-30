@@ -19,8 +19,10 @@ namespace DAL.EF.Models
         public int Quantity { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal")]
-        public decimal UnitPrice { get; set; }
+        public int UnitPrice { get; set; }
+
+        [Required]
+        public int UnitCostPrice { get; set; }
 
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
