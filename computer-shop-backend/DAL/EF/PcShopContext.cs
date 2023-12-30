@@ -10,8 +10,9 @@ namespace DAL.EF
 {
     public class PcShopContext:DbContext
     {
-
+        //operation department
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerToken> CustomerTokens { get; set; }
         public DbSet<CustomerProfit> CustomerProfits { get; set; }
 
         public DbSet<Category> Categories { get; set; }
@@ -19,6 +20,7 @@ namespace DAL.EF
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        //operation department
 
         public DbSet<Moderator> Moderators { get; set; }
 

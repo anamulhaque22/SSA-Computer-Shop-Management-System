@@ -1,5 +1,4 @@
-﻿using DAL.EF.Models;
-using DAL.Interfaces;
+﻿using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace DAL.Repo
 
         public bool IsValid(string key)
         {
-            if(db.ProductKeys.Where(d => d.Key.Equals(key)).FirstOrDefault() != null)
+            if (db.ProductKeys.Where(d => d.Key.Equals(key)).FirstOrDefault() != null)
             {
                 return true;
             }
