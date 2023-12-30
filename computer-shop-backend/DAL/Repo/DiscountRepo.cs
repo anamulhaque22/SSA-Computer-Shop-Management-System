@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class DiscountRepo : Repo, IDiscount<Discount, int, bool>
+    internal class DiscountRepo : Repo, IAdminTools<Discount, int, bool>, IDiscount<int, string>
     {
         public bool Create(Discount obj)
         {

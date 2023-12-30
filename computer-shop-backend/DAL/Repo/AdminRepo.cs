@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class AdminRepo : Repo, IAdminRepo<Admin, string, bool>, IAuth<bool>
+    internal class AdminRepo : Repo, IAdmin<Admin, string, bool>, IAuth<bool>
     {
 
         public bool Create(Admin obj)

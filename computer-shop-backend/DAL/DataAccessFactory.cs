@@ -64,7 +64,7 @@ namespace DAL
         {
             return new ProductRepo();
         }
-        public static IAdminRepo<Admin,string,bool> AdminData() 
+        public static IAdmin<Admin,string,bool> AdminData() 
         {
             return new AdminRepo();
         }
@@ -76,7 +76,11 @@ namespace DAL
         {
             return new AdminRepo();
         }
-        public static IDiscount<Discount, int, bool> DiscountData()
+        public static IAdminTools<Discount, int, bool> DiscountData()
+        {
+            return new DiscountRepo();
+        }
+        public static IDiscount<int, string> DiscountChecker()
         {
             return new DiscountRepo();
         }

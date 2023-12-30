@@ -48,7 +48,7 @@ namespace BLL.Services
         }
         public static int isValid(string coupon)
         {
-            return DataAccessFactory.DiscountData().isValid(coupon);
+            return DataAccessFactory.DiscountChecker().isValid(coupon);
         }
     }
 }

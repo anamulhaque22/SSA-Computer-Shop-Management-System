@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IAdminRepo<Type, Username, RET>
+    public interface IAdmin<Type, Username, RET>
     {
         RET Create(Type obj);
         //List<Type> Get();

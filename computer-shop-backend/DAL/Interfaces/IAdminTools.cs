@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IDiscount<RET, Coupon>
+    public interface IAdminTools<Type, ID, RET>
     {
-        RET isValid(Coupon coupon);
+        RET Create(Type obj);
+        List<Type> Get();
+        Type Get(ID Id);
+        RET Delete(ID obj);
     }
 }

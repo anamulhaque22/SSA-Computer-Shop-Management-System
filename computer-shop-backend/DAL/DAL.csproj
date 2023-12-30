@@ -72,9 +72,10 @@
     <Compile Include="EF\Models\TotalRevenue.cs" />
     <Compile Include="EF\Models\TotalSale.cs" />
     <Compile Include="EF\PcShopContext.cs" />
-    <Compile Include="Interfaces\IAdminRepo.cs" />
+    <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
+    <Compile Include="Interfaces\IAdminTools.cs" />
     <Compile Include="Interfaces\IDiscount.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
