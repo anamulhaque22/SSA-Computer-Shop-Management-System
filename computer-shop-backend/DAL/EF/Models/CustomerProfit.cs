@@ -11,10 +11,9 @@ namespace DAL.EF.Models
     public class CustomerProfit
     {
         [Key]
+        public int Id { get; set; }
         public int CusId { get; set; }
         public int TotalProfit { get; set; }
         public int TempTotalProfit { get; set; }
-        [ForeignKey("CusId")]
-        public virtual Customer Customer { get; set; }
     }
 }

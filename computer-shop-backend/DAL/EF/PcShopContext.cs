@@ -12,6 +12,7 @@ namespace DAL.EF
     {
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerProfit> CustomerProfits { get; set; }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -36,26 +37,6 @@ namespace DAL.EF
         public DbSet<TotalSale> TotalSales { get; set; }
         public DbSet<AdminToken> AdminTokens { get; set; }
         //Admin
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            // Configure the one-to-one relationship with cascade delete
-            modelBuilder.Entity<Customer>()
-                .HasOptional(c => c.CustomerProfit)
-                .WithRequired(cp => cp.Customer)
-                .Map(m =>
-                {
-                    m.MapKey("CusId");
-                    m.ToTable("CustomerProfits"); // Add this line to specify the table name for CustomerProfit
-                })
-                .WillCascadeOnDelete(true);
-
-            // Add this line to mark CusId as a key in CustomerProfit
-            modelBuilder.Entity<CustomerProfit>().HasKey(cp => cp.CusId);
-
-            base.OnModelCreating(modelBuilder);
-        }
-
     }
 
 

@@ -27,8 +27,5 @@ namespace DAL.EF.Models
         public string Address { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
-        
-        // Navigation property for the one-to-one relationship
-        public virtual CustomerProfit CustomerProfit { get; set; }
     }
 }
