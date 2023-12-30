@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CustomerPasswordLength : IMigrationMetadata
+    public sealed partial class CustomerProfitTableModified : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CustomerPasswordLength));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CustomerProfitTableModified));
         
         string IMigrationMetadata.Id
         {
-            get { return "202312301531394_CustomerPasswordLength"; }
+            get { return "202312302157435_CustomerProfitTableModified"; }
         }
         
         string IMigrationMetadata.Source

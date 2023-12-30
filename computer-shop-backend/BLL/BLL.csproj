@@ -64,6 +64,7 @@
     <Compile Include="DTOs\CategoryDTO.cs" />
     <Compile Include="DTOs\ChangePasswordDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
+    <Compile Include="DTOs\CustomerProfitDTO.cs" />
     <Compile Include="DTOs\CustomerRegistrationDTO.cs" />
     <Compile Include="DTOs\CustomerTokenDTO.cs" />
     <Compile Include="DTOs\CustomerUpdateDTO.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BrandService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\CustomerProfitService.cs" />
     <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\EmailService.cs" />

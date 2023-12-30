@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CustomerToken : IMigrationMetadata
+    public sealed partial class TempTotalProfitFieldRemovedFromCustomerProfitTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CustomerToken));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TempTotalProfitFieldRemovedFromCustomerProfitTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202312301645127_CustomerToken"; }
+            get { return "202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable"; }
         }
         
         string IMigrationMetadata.Source

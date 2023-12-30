@@ -27,10 +27,10 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
-        public AdminToken Read(string id)
+        public AdminToken Read(string Tkey)
         {
             //return db.AdminTokens.FirstOrDefault(t => t.Tkey.Equals(id));
-            return db.AdminTokens.Where(d=>d.Tkey.Equals(id)).FirstOrDefault();
+            return db.AdminTokens.Where(d=>d.Tkey.Equals(Tkey)).FirstOrDefault();
         }
 
         public AdminToken Update(AdminToken obj)

@@ -133,6 +133,7 @@
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
     <Compile Include="Interfaces\IAdminTools.cs" />
+    <Compile Include="Interfaces\ICustomerProfit.cs" />
     <Compile Include="Interfaces\IDiscount.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
@@ -143,10 +144,6 @@
     <Compile Include="Migrations\202312222354044_InitialDb.cs" />
     <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
       <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312291928572_ProductImageUrl.cs" />
-    <Compile Include="Migrations\202312291928572_ProductImageUrl.designer.cs">
-      <DependentUpon>202312291928572_ProductImageUrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202312290119010_AdminRelatedTablesCreated.cs" />
     <Compile Include="Migrations\202312290119010_AdminRelatedTablesCreated.designer.cs">
@@ -176,15 +173,6 @@
     <Compile Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.designer.cs">
       <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202312301531394_CustomerPasswordLength.cs" />
-    <Compile Include="Migrations\202312301531394_CustomerPasswordLength.designer.cs">
-      <DependentUpon>202312301531394_CustomerPasswordLength.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312301645127_CustomerToken.cs" />
-    <Compile Include="Migrations\202312301645127_CustomerToken.designer.cs">
-      <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
-    </Compile>
-    
     <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
     <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
       <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
@@ -197,6 +185,14 @@
     <Compile Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.designer.cs">
       <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312302157435_CustomerProfitTableModified.cs" />
+    <Compile Include="Migrations\202312302157435_CustomerProfitTableModified.designer.cs">
+      <DependentUpon>202312302157435_CustomerProfitTableModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs" />
+    <Compile Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.designer.cs">
+      <DependentUpon>202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +201,7 @@
     <Compile Include="Repo\AttendanceReportRepo.cs" />
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
+    <Compile Include="Repo\CustomerProfitRepo.cs" />
     <Compile Include="Repo\DiscountRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />
@@ -248,13 +245,6 @@
     <EmbeddedResource Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.resx">
       <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301531394_CustomerPasswordLength.resx">
-      <DependentUpon>202312301531394_CustomerPasswordLength.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301645127_CustomerToken.resx">
-      <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
-    </EmbeddedResource>
-    
     <EmbeddedResource Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
       <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.resx">
       <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312302157435_CustomerProfitTableModified.resx">
+      <DependentUpon>202312302157435_CustomerProfitTableModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.resx">
+      <DependentUpon>202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

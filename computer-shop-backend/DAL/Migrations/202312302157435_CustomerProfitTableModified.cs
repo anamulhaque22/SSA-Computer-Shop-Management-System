@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CustomerToken : DbMigration
+    public partial class CustomerProfitTableModified : DbMigration
     {
         public override void Up()
         {
@@ -19,10 +19,14 @@
                     })
                 .PrimaryKey(t => t.Id);
             
+            AddColumn("dbo.Products", "ImageUrl", c => c.String(nullable: false));
+            AddColumn("dbo.Products", "PublicImageId", c => c.String(nullable: false));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Products", "PublicImageId");
+            DropColumn("dbo.Products", "ImageUrl");
             DropTable("dbo.CustomerTokens");
         }
     }

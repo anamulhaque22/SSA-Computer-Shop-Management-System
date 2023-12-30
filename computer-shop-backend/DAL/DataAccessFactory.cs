@@ -115,6 +115,13 @@ namespace DAL
         {
             return new TotalSaleRepo();
         }
-        
+        public static IAdminTools<CustomerProfit,int,bool> CustomerProfitData()
+        {
+            return new CustomerProfitRepo();
+        }
+        public static ICustomerProfit<CustomerProfit, bool> TopCustomersData()
+        {
+            return new CustomerProfitRepo();
+        }
     }
 }
