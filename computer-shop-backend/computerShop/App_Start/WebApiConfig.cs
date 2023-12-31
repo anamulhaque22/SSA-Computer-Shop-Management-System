@@ -18,9 +18,10 @@ namespace computerShop
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+                 
             );
-            config.EnableCors();
 
+            config.EnableCors();
             // Configure JSON serialization to ignore circular references
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }

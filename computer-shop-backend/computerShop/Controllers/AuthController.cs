@@ -11,7 +11,7 @@ using System.Web.Http.Cors;
 
 namespace computerShop.Controllers
 {
-    [EnableCors("*", "*", "*")]
+   [EnableCors("*", "*", "*")]
     public class AuthController : ApiController
     {
         [HttpPost]
