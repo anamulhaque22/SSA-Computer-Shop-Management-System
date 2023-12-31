@@ -129,6 +129,7 @@
     <Compile Include="EF\Models\OrderDetail.cs" />
     <Compile Include="EF\Models\TotalRevenue.cs" />
     <Compile Include="EF\Models\TotalSale.cs" />
+    <Compile Include="EF\Models\AdminOTP.cs" />
     <Compile Include="EF\PcShopContext.cs" />
     <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
@@ -207,6 +208,22 @@
     <Compile Include="Migrations\202312310005121_EmployeeTableAdded.designer.cs">
       <DependentUpon>202312310005121_EmployeeTableAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312311454360_AdminOTPTableAdded.cs" />
+    <Compile Include="Migrations\202312311454360_AdminOTPTableAdded.designer.cs">
+      <DependentUpon>202312311454360_AdminOTPTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312311500568_AdminOTPTableAddedFixed.cs" />
+    <Compile Include="Migrations\202312311500568_AdminOTPTableAddedFixed.designer.cs">
+      <DependentUpon>202312311500568_AdminOTPTableAddedFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312311519024_AdminOTPTableIntToString.cs" />
+    <Compile Include="Migrations\202312311519024_AdminOTPTableIntToString.designer.cs">
+      <DependentUpon>202312311519024_AdminOTPTableIntToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.cs" />
+    <Compile Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.designer.cs">
+      <DependentUpon>202312311558090_OtpVerifiedFieldAddedInAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,6 +235,7 @@
     <Compile Include="Repo\CustomerProfitRepo.cs" />
     <Compile Include="Repo\DiscountRepo.cs" />
     <Compile Include="Repo\EmployeeRepo.cs" />
+    <Compile Include="Repo\AdminOtpRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />
     <Compile Include="Repo\CustomerTokenRepo.cs" />
@@ -283,6 +301,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312310005121_EmployeeTableAdded.resx">
       <DependentUpon>202312310005121_EmployeeTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312311454360_AdminOTPTableAdded.resx">
+      <DependentUpon>202312311454360_AdminOTPTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312311500568_AdminOTPTableAddedFixed.resx">
+      <DependentUpon>202312311500568_AdminOTPTableAddedFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312311519024_AdminOTPTableIntToString.resx">
+      <DependentUpon>202312311519024_AdminOTPTableIntToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.resx">
+      <DependentUpon>202312311558090_OtpVerifiedFieldAddedInAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

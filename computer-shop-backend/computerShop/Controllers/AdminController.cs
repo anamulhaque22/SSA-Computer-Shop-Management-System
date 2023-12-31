@@ -23,6 +23,16 @@ namespace computerShop.Controllers
         {
             try
             {
+                //status 0 = Model Invalid
+                //status 1 = Confirm Password Invalid
+                //status 2 = OTP Invalid
+                //status 3 = License Key Invalid
+                //status 4 = OTP sent to your email
+                //status 5 = Username Duplicate
+                //status 6 = Email Duplicate
+                //status 7 = Invalid file format or size
+                //status 8 = OTP Generation Failed
+
                 var obj = new AdminSingupDTO();
                 obj.Username = HttpContext.Current.Request.Form["Username"];
                 obj.Email = HttpContext.Current.Request.Form["Email"];
@@ -35,14 +45,6 @@ namespace computerShop.Controllers
                 obj.Phone = HttpContext.Current.Request.Form["Phone"];
                 obj.Address = HttpContext.Current.Request.Form["Address"];
                 obj.Key = HttpContext.Current.Request.Form["Key"];
-                //status 0 = Model Invalid
-                //status 1 = Confirm Password Invalid
-                //status 2 = OTP Invalid
-                //status 3 = License Key Invalid
-                //status 4 = create success
-                //status 5 = Username Duplicate
-                //status 6 = Email Duplicate
-                //status 7 = Invalid file format or size
 
                 if (!ModelState.IsValid) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Response", status = 0 }); }
                 if (!confirmPassChecker(obj.Password, obj.cPassword)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Password and Confirm Password not matched", status = 1 }); }
@@ -67,7 +69,19 @@ namespace computerShop.Controllers
                     }
                 }
 
-                if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status = 4 });
+                var otp = AdminService.GenerateOTP();
+
+                // Send OTP to the user's email
+                if(AdminService.SendOTPEmail(obj.Email, otp))
+                {
+                    // Save the OTP in the server's OTP table
+                    if(!AdminService.SaveOTP(obj.Username, otp)){
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "OTP Generation Failed", status = 8 });
+                    }
+                }
+
+                if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.OK, new { message = "OTP sent to your email. Submit on url and Create Account", url = "https://localhost:44389/admin/create/submitOtp", status = 4 });
+                //if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status = 4 });
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
             }
             catch (Exception ex)
@@ -75,9 +89,28 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
-
         [HttpPost]
-        [Route("admin/createAsJson")]
+        [Route("admin/create/submitOtp")]
+        public HttpResponseMessage SubmitOtp()
+        {
+            //status 9 = Account Created
+            try
+            {
+                string Username = HttpContext.Current.Request.Form["Username"];
+                string Otp = HttpContext.Current.Request.Form["Otp"];
+                if (AdminService.otpMatched(Username, Otp) && AdminService.UpdateOtpVerificationStatus(Username) && AdminService.DeleteOtp(Username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status = 9 });
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        //[HttpPost]
+        //[Route("admin/createAsJson")]
         public HttpResponseMessage Create(AdminSingupDTO obj)
         {
             try

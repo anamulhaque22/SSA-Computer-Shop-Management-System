@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 #Admin Uploaded Pictures
 AdminPictures/*
+
+computerShop/AdminMailInfo/*

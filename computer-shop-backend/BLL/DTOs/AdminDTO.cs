@@ -12,7 +12,6 @@ namespace BLL.DTOs
         [Key]
         [StringLength(16)]
         public string Username { get; set; }
-        public int? Otp { get; set; }
         [Required]
         [StringLength(100)]
         public string Email { get; set; }

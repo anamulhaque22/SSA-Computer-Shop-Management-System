@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
+using DAL.EF;
+using static System.Net.WebRequestMethods;
+using System.Xml.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace BLL.Services
 {
@@ -55,7 +61,7 @@ namespace BLL.Services
             });
             var mapper = new Mapper(config);
             data.Password = null;
-            data.Otp = null;
+            data.OtpVerified = 0;
             return mapper.Map<AdminDTO>(data);
         }
         public static bool isUsernameUnique(string username)
@@ -109,11 +115,21 @@ namespace BLL.Services
                 string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "AdminPictures");
                 string filePath = Path.Combine(folderPath, fileName);
 
-                if (File.Exists(filePath))
+                if (System.IO.File.Exists(filePath))
                 {
-                    File.Delete(filePath);
+                    System.IO.File.Delete(filePath);
                 }
             }
+        }
+        public static bool UpdateOtpVerificationStatus(string username)
+        {
+            var pData = DataAccessFactory.AdminData().Get(username);
+            if (pData == null)
+            {
+                return false;
+            }
+            pData.OtpVerified = 1;
+            return DataAccessFactory.AdminData().UpdateSpecificField(pData);
         }
         public static bool UpdatePassword(string token, string password)
         {
@@ -141,6 +157,68 @@ namespace BLL.Services
         {
             var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
             return DataAccessFactory.AdminData().Get(pUsername).Password.Equals(password);
+        }
+        public static bool SendOTPEmail(string email, string otp)
+        {
+            try
+            {
+                // Read email and password from JSON file
+                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AdminMailInfo", "info.json");
+                string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
+                JObject json = JObject.Parse(jsonContent);
+
+                // Configure the SMTP client for Outlook
+                SmtpClient smtpClient = new SmtpClient("smtp-mail.outlook.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(json["Email"].ToString(), json["Password"].ToString()),
+                    EnableSsl = true,
+                };
+
+                // Create the email message
+                MailMessage mailMessage = new MailMessage
+                {
+                    From = new MailAddress("authenticator.smt@outlook.com"),
+                    Subject = "SSA Computer Shop - OTP verification",
+                    Body = $"Your OTP is: {otp}",
+                    IsBodyHtml = false,
+                };
+
+                // Add recipient
+                mailMessage.To.Add(email);
+
+                // Send the email
+                smtpClient.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine($"Error sending email: {ex.Message}");
+                return false;
+            }
+        }
+        public static string GenerateOTP()
+        {
+            // Generate a 6-digit OTP
+            Random random = new Random();
+            int otp = random.Next(100000, 999999);
+            return otp.ToString();
+        }
+        public static bool SaveOTP(string username, string otp)
+        {
+            AdminOTP adminOTP = new AdminOTP();
+            adminOTP.Username = username;
+            adminOTP.Otp = otp;
+            return DataAccessFactory.AdminOtpData().Create(adminOTP);
+        }
+        public static bool otpMatched(string username, string otp)
+        {
+            return DataAccessFactory.AdminOtpData().Get(username).Otp.Equals(otp);
+        }
+        public static bool DeleteOtp(string username)
+        {
+            return DataAccessFactory.AdminOtpData().Delete(username);
         }
     }
 }

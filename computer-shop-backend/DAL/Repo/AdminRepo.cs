@@ -33,14 +33,14 @@ namespace DAL.Repo
             var pData = db.Admins.Find(obj.Username);
             obj.Email = pData.Email;
             obj.Password = pData.Password;
-            obj.Otp = pData.Otp;
+            obj.OtpVerified = pData.OtpVerified;
             db.Entry(pData).CurrentValues.SetValues(obj);
             return db.SaveChanges()>0;   
         }
 
         public bool Authenticate(string username, string password)
         {
-            return db.Admins.Where(d => d.Username.Equals(username) && d.Password.Equals(password)).Count() > 0;
+            return db.Admins.Where(d => d.Username.Equals(username) && d.Password.Equals(password) && d.OtpVerified==1).Count() > 0;
         }
 
         public bool isUniqueEmail(string email)

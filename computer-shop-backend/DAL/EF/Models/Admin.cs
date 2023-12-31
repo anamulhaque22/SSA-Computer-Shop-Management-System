@@ -13,7 +13,7 @@ namespace DAL.EF.Models
         [Key]
         [StringLength(16)]
         public string Username { get; set; }
-        public int? Otp { get; set; }
+        public int OtpVerified { get; set; } = 0;
         [Required]
         [StringLength(100)]
         public string Email { get; set; }

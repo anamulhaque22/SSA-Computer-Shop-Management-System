@@ -1,4 +1,5 @@
 ﻿using DAL.Criteria;
+using DAL.EF;
 using DAL.EF.Models;
 using DAL.Interfaces;
 using DAL.Repo;
@@ -126,6 +127,10 @@ namespace DAL
         public static IEmployee<Employee, bool, int> EmployeeData()
         {
             return new EmployeeRepo();
+        }
+        public static IAdminTools<AdminOTP,string,bool> AdminOtpData()
+        {
+            return new AdminOtpRepo();
         }
     }
 }
