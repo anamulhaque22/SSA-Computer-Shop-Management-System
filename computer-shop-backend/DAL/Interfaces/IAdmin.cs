@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IAdmin<Type, Username, RET>
+    public interface IAdmin<Type, UniqueIdentifier, RET>
     {
         RET Create(Type obj);
         //List<Type> Get();
-        Type Get(Username username);
+        RET isUniqueEmail(UniqueIdentifier email);
+        Type Get(UniqueIdentifier username);
         RET Update(Type obj);
-        RET UpdatePassword(Type obj);
+        RET UpdateSpecificField(Type obj);
     }
 }

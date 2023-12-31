@@ -22,16 +22,16 @@ namespace DAL.Repo
         {
             return db.Admins.Find(username);
         }
-        public bool UpdatePassword(Admin obj)
+        public bool UpdateSpecificField(Admin obj)
         {
             var pData = db.Admins.Find(obj.Username);
-            obj.Otp = pData.Otp;
             db.Entry(pData).CurrentValues.SetValues(obj);
             return db.SaveChanges() > 0;
         }
         public bool Update(Admin obj)
         {
             var pData = db.Admins.Find(obj.Username);
+            obj.Email = pData.Email;
             obj.Password = pData.Password;
             obj.Otp = pData.Otp;
             db.Entry(pData).CurrentValues.SetValues(obj);
@@ -41,6 +41,11 @@ namespace DAL.Repo
         public bool Authenticate(string username, string password)
         {
             return db.Admins.Where(d => d.Username.Equals(username) && d.Password.Equals(password)).Count() > 0;
+        }
+
+        public bool isUniqueEmail(string email)
+        {
+            return db.Admins.Where(d=>d.Email.Equals(email)).Count() == 0;
         }
     }
 }

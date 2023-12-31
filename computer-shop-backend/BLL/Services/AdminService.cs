@@ -38,6 +38,14 @@ namespace BLL.Services
             data.Otp = null;
             return mapper.Map<AdminDTO>(data);
         }
+        public static bool isUsernameUnique(string username)
+        {
+            return DataAccessFactory.AdminData().Get(username) == null;
+        }
+        public static bool isEmailUnique(string email)
+        {
+            return DataAccessFactory.AdminData().isUniqueEmail(email);
+        }
         public static bool Update(AdminUpdateDTO uData, string token) 
         {
             var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
@@ -64,7 +72,18 @@ namespace BLL.Services
                 return false;
             }
             pData.Password = password;
-            return DataAccessFactory.AdminData().UpdatePassword(pData);
+            return DataAccessFactory.AdminData().UpdateSpecificField(pData);
+        }
+        public static bool UpdateEmail(string token, string email)
+        {
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            var pData = DataAccessFactory.AdminData().Get(pUsername);
+            if (pData == null)
+            {
+                return false;
+            }
+            pData.Email = email;
+            return DataAccessFactory.AdminData().UpdateSpecificField(pData);
         }
         public static bool isCurrPassExist(string token, string password)
         {

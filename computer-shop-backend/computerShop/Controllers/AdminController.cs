@@ -24,8 +24,12 @@ namespace computerShop.Controllers
                 //status 2 = OTP Invalid
                 //status 3 = License Key Invalid
                 //status 4 = create success
+                //status 5 = Username Duplicate
+                //status 6 = Email Duplicate
                 if (!ModelState.IsValid) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Response", status=0 }); }
                 if (!confirmPassChecker(obj.Password, obj.cPassword)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Password and Confirm Password not matched", status = 1 }); }
+                if (!AdminService.isUsernameUnique(obj.Username)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Username Already Exist. Choose a different one", status = 5 }); }
+                if (!AdminService.isEmailUnique(obj.Email)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Email Already Exist. Choose a different one", status = 6 }); }
                 if (!ProductKeyService.IsValid(obj.Key)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Product Key", status = 3 }); }
                                 
                 if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status=4 });
@@ -85,6 +89,31 @@ namespace computerShop.Controllers
                 if (AdminService.UpdatePassword(token, obj.Password))
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, new { message = "Password Changed successfully", status = 4 });
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [Route("admin/updateEmail")]
+        [AdminLogged]
+        public HttpResponseMessage UpdateEmail(AdminUpdateEmailModel obj)
+        {
+            try
+            {
+                //status 0 = Model Invalid
+                //status 4 = Update success
+                //status 6 = Email Duplicate
+                var token = Request.Headers.Authorization?.ToString();
+                if (!ModelState.IsValid) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Response", status = 0 }); }
+                if (!AdminService.isEmailUnique(obj.Email)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Email Already Exist. Choose a different one", status = 6 }); }
+
+                if (AdminService.UpdateEmail(token, obj.Email))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { message = "Email Changed successfully", status = 4 });
                 }
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
             }

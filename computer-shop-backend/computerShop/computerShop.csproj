@@ -143,6 +143,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminLoginModel.cs" />
+    <Compile Include="Models\AdminUpdateEmailModel.cs" />
     <Compile Include="Models\AdminUpdatePasswordModel.cs" />
     <Compile Include="Models\DiscountModel.cs" />
     <Compile Include="Models\CustomerLoginModel.cs" />
