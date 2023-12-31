@@ -21,5 +21,12 @@ namespace BLL.Services
             var mapper = new Mapper(config);
             return mapper.Map<EmployeeDTO>(DataAccessFactory.EmployeeData().GetEmployeeOfTheMonth());
         }
+        public static int GetTotalEmployeeWage()
+        {
+            var salaries = DataAccessFactory.SalaryData().Read(); 
+
+            decimal totalAmount = salaries.Sum(s => decimal.Parse(s.Amount));
+            return Convert.ToInt32(totalAmount);
+        }
     }
 }

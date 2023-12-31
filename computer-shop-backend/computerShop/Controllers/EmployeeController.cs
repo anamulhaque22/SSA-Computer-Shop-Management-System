@@ -25,5 +25,19 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+        [HttpPost]
+        [Route("employee/getEmployeeWage")]
+        [AdminLogged]
+        public HttpResponseMessage GetEmployeeWage()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new { wage = EmployeeService.GetTotalEmployeeWage() });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
     }
 }
