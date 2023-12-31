@@ -19,7 +19,9 @@ namespace BLL.Services
                 cfg.CreateMap<Employee, EmployeeDTO>();
             });
             var mapper = new Mapper(config);
-            return mapper.Map<EmployeeDTO>(DataAccessFactory.EmployeeData().GetEmployeeOfTheMonth());
+            var data = DataAccessFactory.EmployeeData().GetEmployeeOfTheMonth();
+            data.Password = null;
+            return mapper.Map<EmployeeDTO>(data);
         }
         public static int GetTotalEmployeeWage()
         {

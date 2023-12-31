@@ -385,6 +385,25 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+        [HttpPost]
+        [AdminLogged]
+        [Route("admin/report")]
+        public HttpResponseMessage GenerateReport()
+        {
+            try
+            {
+                var token = Request.Headers.Authorization?.ToString();
+                if (AdminService.GenerateReport(token))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Report Sent to Admin's email successfully", status = 1 });
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
 
         public bool confirmPassChecker(string password, string cPassword)
         {

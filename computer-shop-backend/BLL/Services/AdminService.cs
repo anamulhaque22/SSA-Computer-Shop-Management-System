@@ -14,6 +14,7 @@ using DAL.EF;
 using static System.Net.WebRequestMethods;
 using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BLL.Services
 {
@@ -219,6 +220,63 @@ namespace BLL.Services
         public static bool DeleteOtp(string username)
         {
             return DataAccessFactory.AdminOtpData().Delete(username);
+        }
+        public static bool GenerateReport(string token)
+        {
+            try
+            {
+                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AdminMailInfo", "info.json");
+                string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
+                JObject json = JObject.Parse(jsonContent);
+
+                var top3Cus = CustomerProfitService.GetTop3Customers();
+                var mostSoldProduct = ProductService.GetMostSoldProduct();
+                var empOfTheMonth = EmployeeService.GetEmployeeOfTheMonth();
+                var empWage = EmployeeService.GetTotalEmployeeWage();
+                var activeCusCount = CustomerProfitService.GetActiveCustomerCount();
+                var totalRev = TotalRevenuesService.Get(DateTime.Now.Year);
+                var totalSales = TotalSaleService.Get(DateTime.Now.Year);
+
+                var reportData = new
+                {
+                    Top3Customers = top3Cus,
+                    MostSoldProduct = mostSoldProduct,
+                    EmployeeOfTheMonth = empOfTheMonth,
+                    TotalEmployeeWage = empWage,
+                    ActiveCustomerCount = activeCusCount,
+                    TotalRevenues = totalRev,
+                    TotalSales = totalSales
+                };
+
+                // Serialize the data to JSON
+                string reportContent = JsonConvert.SerializeObject(reportData, Formatting.Indented);
+
+                SmtpClient smtpClient = new SmtpClient("smtp-mail.outlook.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(json["Email"].ToString(), json["Password"].ToString()),
+                    EnableSsl = true,
+                };
+
+                MailMessage mailMessage = new MailMessage
+                {
+                    From = new MailAddress(json["Email"].ToString()),
+                    Subject = "Generated Report",
+                    Body = reportContent,
+                    IsBodyHtml = true,  
+                };
+                string AdminMail = DataAccessFactory.AdminData().Get(GetUsernameFromToken(token)).Email;
+                
+                mailMessage.To.Add(AdminMail); 
+
+                smtpClient.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending report: {ex.Message}");
+                return false;
+            }
         }
     }
 }
