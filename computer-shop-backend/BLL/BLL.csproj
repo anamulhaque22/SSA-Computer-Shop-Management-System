@@ -101,6 +101,7 @@
     <Compile Include="Services\TaskService.cs" />
     <Compile Include="Services\TotalRevenuesService.cs" />
     <Compile Include="Services\TotalSaleService.cs" />
+    <Compile Include="Validators\ValidateGender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
