@@ -23,6 +23,25 @@ namespace BLL.Services
             var cData = mapper.Map<Admin>(data);
             return DataAccessFactory.AdminData().Create(cData);
         }
+        public static string GetUsernameFromToken(string token)
+        {
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            if(pUsername == null)
+            {
+                return null;
+            }
+            return pUsername;
+        }
+        public static string GetPictureNameFromToken(string token)
+        {
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            var pData = DataAccessFactory.AdminData().Get(pUsername);
+            if (pData == null)
+            {
+                return null;
+            }
+            return pData.PictureName;
+        }
         public static AdminDTO Get(string username) 
         {
             var data = DataAccessFactory.AdminData().Get(username);

@@ -10,14 +10,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace computerShop.Controllers
 {
+    [EnableCors("*","*","*")]
     public class AdminController : ApiController
     {
         [HttpPost]
         [Route("admin/createForm")]
-        public HttpResponseMessage CreateWithPicture()
+        public HttpResponseMessage CreateForm()
         {
             try
             {
@@ -235,6 +237,27 @@ namespace computerShop.Controllers
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [AdminLogged]
+        [Route("admin/getProfilePicture")]
+        public IHttpActionResult GetProfilePicture()
+        {
+            var token = Request.Headers.Authorization?.ToString();
+            string fileName = AdminService.GetPictureNameFromToken(token);
+
+            string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "AdminPictures");
+            string filePath = Path.Combine(folderPath, fileName);
+
+            if (File.Exists(filePath))
+            {
+                byte[] fileBytes = File.ReadAllBytes(filePath);
+                return Ok(fileBytes);  // Return the image bytes in the response
+            }
+            else
+            {
+                return NotFound();
             }
         }
         [HttpPost]
