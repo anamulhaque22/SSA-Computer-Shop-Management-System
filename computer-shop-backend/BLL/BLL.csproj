@@ -69,6 +69,7 @@
     <Compile Include="DTOs\CustomerTokenDTO.cs" />
     <Compile Include="DTOs\CustomerUpdateDTO.cs" />
     <Compile Include="DTOs\DiscountDTO.cs" />
+    <Compile Include="DTOs\EmployeeDTO.cs" />
     <Compile Include="DTOs\MAttendanceReportDTO.cs" />
     <Compile Include="DTOs\ModeratorDTO.cs" />
     <Compile Include="DTOs\MSalaryDTO.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Services\DiscountService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Services\ModeratorService.cs" />
     <Compile Include="Services\ProductKeyService.cs" />
     <Compile Include="Services\SalaryService.cs" />

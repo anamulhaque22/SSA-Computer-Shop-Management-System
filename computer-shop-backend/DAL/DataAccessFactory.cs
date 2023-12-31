@@ -123,5 +123,9 @@ namespace DAL
         {
             return new CustomerProfitRepo();
         }
+        public static IEmployee<Employee> EmployeeData()
+        {
+            return new EmployeeRepo();
+        }
     }
 }

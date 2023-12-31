@@ -118,6 +118,7 @@
     <Compile Include="EF\Models\CustomerToken.cs" />
     <Compile Include="EF\Models\CustomerProfit.cs" />
     <Compile Include="EF\Models\Discount.cs" />
+    <Compile Include="EF\Models\Employee.cs" />
     <Compile Include="EF\Models\Moderator.cs" />
     <Compile Include="EF\Models\Product.cs" />
     <Compile Include="EF\Models\ProductKey.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Interfaces\IAdminTools.cs" />
     <Compile Include="Interfaces\ICustomerProfit.cs" />
     <Compile Include="Interfaces\IDiscount.cs" />
+    <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
@@ -201,6 +203,10 @@
     <Compile Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.designer.cs">
       <DependentUpon>202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312310005121_EmployeeTableAdded.cs" />
+    <Compile Include="Migrations\202312310005121_EmployeeTableAdded.designer.cs">
+      <DependentUpon>202312310005121_EmployeeTableAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,6 +217,7 @@
     <Compile Include="Repo\CategoryRepo.cs" />
     <Compile Include="Repo\CustomerProfitRepo.cs" />
     <Compile Include="Repo\DiscountRepo.cs" />
+    <Compile Include="Repo\EmployeeRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />
     <Compile Include="Repo\CustomerTokenRepo.cs" />
@@ -273,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.resx">
       <DependentUpon>202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312310005121_EmployeeTableAdded.resx">
+      <DependentUpon>202312310005121_EmployeeTableAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

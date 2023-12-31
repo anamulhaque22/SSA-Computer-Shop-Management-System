@@ -21,7 +21,7 @@ namespace DAL.EF
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         //operation department
-
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Moderator> Moderators { get; set; }
 
         public DbSet<Salary> Salaris { get; set; }
