@@ -288,11 +288,13 @@ namespace computerShop.Controllers
         [HttpPost]
         [Route("admin/Get")]
         [AdminLogged]
-        public HttpResponseMessage Get(AdminDTO obj)
+        public HttpResponseMessage Get()
         {
             try
             {
-                var response = AdminService.Get(obj.Username);
+                var token = Request.Headers.Authorization?.ToString();
+                var username = AdminService.GetUsernameFromToken(token);
+                var response = AdminService.Get(username);
                 if (response != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, response);

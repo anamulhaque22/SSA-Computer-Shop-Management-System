@@ -45,6 +45,7 @@ namespace BLL.DTOs
         [Required]
         [StringLength(100)]
         public string Address { get; set; }
+        [Required]
         public string PictureName { get; set; } = null;
         [Required]
         [StringLength(16)]
