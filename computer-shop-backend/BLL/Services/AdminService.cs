@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using System.IO;
 
 namespace BLL.Services
 {
@@ -62,6 +63,38 @@ namespace BLL.Services
             var cData = mapper.Map<Admin>(uData);
             cData.Username = pUsername;
             return DataAccessFactory.AdminData().Update(cData);
+        }
+        public static bool UpdateProfilePicture(string token, string newfileName)
+        {
+            var pUsername = DataAccessFactory.AdminTokenData().Read(token).Username;
+            var pData = DataAccessFactory.AdminData().Get(pUsername);
+            if (pData == null)
+            {
+                return false;
+            }
+            pData.Username = pUsername;
+            string exFileName = pData.PictureName;
+            pData.PictureName = newfileName;
+            if (DataAccessFactory.AdminData().Update(pData))
+            {
+                // Delete the old profile picture file
+                DeleteProfilePicture(exFileName);
+                return true;
+            }
+            return false;
+        }
+        private static void DeleteProfilePicture(string fileName)
+        {
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "AdminPictures");
+                string filePath = Path.Combine(folderPath, fileName);
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+            }
         }
         public static bool UpdatePassword(string token, string password)
         {

@@ -4,9 +4,11 @@ using computerShop.Auth;
 using computerShop.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace computerShop.Controllers
@@ -14,7 +16,66 @@ namespace computerShop.Controllers
     public class AdminController : ApiController
     {
         [HttpPost]
-        [Route("admin/create")]
+        [Route("admin/createForm")]
+        public HttpResponseMessage CreateWithPicture()
+        {
+            try
+            {
+                var obj = new AdminSingupDTO();
+                obj.Username = HttpContext.Current.Request.Form["Username"];
+                obj.Email = HttpContext.Current.Request.Form["Email"];
+                obj.Password = HttpContext.Current.Request["Password"];
+                obj.cPassword = HttpContext.Current.Request["cPassword"];
+                obj.Name= HttpContext.Current.Request.Form["Name"];
+                obj.Gender = HttpContext.Current.Request.Form["Gender"];
+                obj.DateOfBirth = DateTime.Parse(HttpContext.Current.Request.Form["DateOfBirth"]);
+                obj.Nid = HttpContext.Current.Request.Form["Nid"];
+                obj.Phone = HttpContext.Current.Request.Form["Phone"];
+                obj.Address = HttpContext.Current.Request.Form["Address"];
+                obj.Key = HttpContext.Current.Request.Form["Key"];
+                //status 0 = Model Invalid
+                //status 1 = Confirm Password Invalid
+                //status 2 = OTP Invalid
+                //status 3 = License Key Invalid
+                //status 4 = create success
+                //status 5 = Username Duplicate
+                //status 6 = Email Duplicate
+                //status 7 = Invalid file format or size
+
+                if (!ModelState.IsValid) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Response", status = 0 }); }
+                if (!confirmPassChecker(obj.Password, obj.cPassword)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Password and Confirm Password not matched", status = 1 }); }
+                if (!AdminService.isUsernameUnique(obj.Username)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Username Already Exist. Choose a different one", status = 5 }); }
+                if (!AdminService.isEmailUnique(obj.Email)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Email Already Exist. Choose a different one", status = 6 }); }
+                if (!ProductKeyService.IsValid(obj.Key)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Product Key", status = 3 }); }
+
+                var httpRequest = HttpContext.Current.Request;
+                if (httpRequest.Files.Count > 0)
+                {
+                    var postedFile = httpRequest.Files[0];
+
+                    // Check file type and size
+                    if (IsValidFile(postedFile))
+                    {
+                        var fileName = SaveFile(postedFile);
+                        obj.PictureName = fileName;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid file format or size", status = 7 });
+                    }
+                }
+
+                if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status = 4 });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [Route("admin/createAsJson")]
         public HttpResponseMessage Create(AdminSingupDTO obj)
         {
             try
@@ -31,7 +92,7 @@ namespace computerShop.Controllers
                 if (!AdminService.isUsernameUnique(obj.Username)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Username Already Exist. Choose a different one", status = 5 }); }
                 if (!AdminService.isEmailUnique(obj.Email)) { return Request.CreateResponse(HttpStatusCode.OK, new { message = "Email Already Exist. Choose a different one", status = 6 }); }
                 if (!ProductKeyService.IsValid(obj.Key)) { return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid Product Key", status = 3 }); }
-                                
+
                 if (AdminService.Signup(obj) == true) return Request.CreateResponse(HttpStatusCode.Created, new { message = "Admin Information Added successfully", status=4 });
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
             }
@@ -40,6 +101,45 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+        private bool IsValidFile(HttpPostedFile file)
+        {
+            // Check file type
+            string[] allowedFileTypes = { "image/jpeg", "image/png", "image/jpg" };
+            if (!allowedFileTypes.Contains(file.ContentType))
+            {
+                return false;
+            }
+
+            // Check file size (5MB limit)
+            int maxFileSize = 5 * 1024 * 1024; // 5MB
+            return file.ContentLength <= maxFileSize;
+        }
+
+        private string SaveFile(HttpPostedFile file)
+        {
+            // Specify the folder path
+            
+            //var folderPath = HttpContext.Current.Server.MapPath("~/Pictures/");
+            var folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "AdminPictures");
+
+            // Create the folder if it doesn't exist
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // Generate a unique file name
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+            // Combine the folder path and file name
+            var filePath = Path.Combine(folderPath, fileName);
+
+            // Save the file, overwriting if it already exists
+            file.SaveAs(filePath);
+
+            return fileName;
+        }
+
         [HttpPost]
         [Route("admin/update")]
         [AdminLogged]
@@ -90,6 +190,46 @@ namespace computerShop.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, new { message = "Password Changed successfully", status = 4 });
                 }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpPost]
+        [Route("admin/updateProfilePicture")]
+        [AdminLogged]
+        public HttpResponseMessage UpdateProfilePicture()
+        {
+            try
+            {
+                //status 4 = Update success
+                //status 7 = Invalid file format or size
+
+                var token = Request.Headers.Authorization?.ToString();
+                var httpRequest = HttpContext.Current.Request;
+                if (httpRequest.Files.Count > 0)
+                {
+                    var postedFile = httpRequest.Files[0];
+
+                    // Check file type and size
+                    if (IsValidFile(postedFile))
+                    {
+                        var fileName = SaveFile(postedFile);
+                        if (AdminService.UpdateProfilePicture(token, fileName))
+                        {
+                            return Request.CreateResponse(HttpStatusCode.OK, new { message = "Profile Picture Updated successfully", status = 4 });
+                        }
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { message = "Invalid file format or size", status = 7 });
+                    }
+                }
+                
+
+               
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Unsuccessfull" });
             }
             catch (Exception ex)
