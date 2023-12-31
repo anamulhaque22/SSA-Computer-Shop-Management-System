@@ -278,5 +278,22 @@ namespace BLL.Services
                 return false;
             }
         }
+        public static string GenerateCsvContent()
+        {
+            var totalRevenues = TotalRevenuesService.Get();
+
+            StringBuilder csvContent = new StringBuilder();
+
+            // Add CSV headers
+            csvContent.AppendLine("Year,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec");
+
+            foreach (var totalRevenue in totalRevenues)
+            {
+                string yearData = $"{totalRevenue.Year},{totalRevenue.Jan},{totalRevenue.Feb},{totalRevenue.Mar},{totalRevenue.Apr},{totalRevenue.May},{totalRevenue.Jun},{totalRevenue.Jul},{totalRevenue.Aug},{totalRevenue.Sep},{totalRevenue.Oct},{totalRevenue.Nov},{totalRevenue.Dec}";
+                csvContent.AppendLine(yearData);
+            }
+
+            return csvContent.ToString();
+        }
     }
 }

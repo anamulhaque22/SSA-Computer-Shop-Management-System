@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -401,6 +402,45 @@ namespace computerShop.Controllers
             }
             catch (Exception ex)
             {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpGet]
+        [Route("admin/getTotalRevenueReportAsCsv")]
+        [AdminLogged]
+        public HttpResponseMessage DownloadTotalRevenueReportCsv()
+        {
+            try
+            {
+                string csvContent = AdminService.GenerateCsvContent();
+
+                // Check if the "Reports" folder exists, and create it if not
+                string reportsFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AdminReports");
+                if (!Directory.Exists(reportsFolderPath))
+                {
+                    Directory.CreateDirectory(reportsFolderPath);
+                }
+
+                // Create a CSV file with a unique name
+                string fileName = $"report_{DateTime.Now:yyyyMMddHHmmss}.csv";
+                string filePath = Path.Combine(reportsFolderPath, fileName);
+
+                File.WriteAllText(filePath, csvContent);
+
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
+                var fileStream = new FileStream(filePath, FileMode.Open);
+                response.Content = new StreamContent(fileStream);
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                {
+                    FileName = fileName
+                };
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error generating CSV report: {ex.Message}");
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }

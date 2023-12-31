@@ -163,6 +163,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AdminReports\" />
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
   </ItemGroup>
