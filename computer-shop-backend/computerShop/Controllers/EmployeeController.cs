@@ -39,5 +39,61 @@ namespace computerShop.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+        [HttpPost]
+        [Route("employee/nonApprovedEmployees")]
+        [AdminLogged]
+        public HttpResponseMessage GetNonApprovedEmployees()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, EmployeeService.NonApprovedEmployeeList());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpGet]
+        [Route("employee/approve/{id}")]
+        [AdminLogged]
+        public HttpResponseMessage ApproveEmployee(int id)
+        {
+            try
+            {
+                if (EmployeeService.AdminApprove(id))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new {message = "Emmployee Approved"});
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Emmployee Not Approved" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+        [HttpGet]
+        [Route("employee/delete/{id}")]
+        [AdminLogged]
+        public HttpResponseMessage DeleteEmployee(int id)
+        {
+            try
+            {
+                if (EmployeeService.Delete(id))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { message = "Emmployee Data Removed" });
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Emmployee Data Not Removed" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
     }
 }

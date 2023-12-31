@@ -123,7 +123,7 @@ namespace DAL
         {
             return new CustomerProfitRepo();
         }
-        public static IEmployee<Employee> EmployeeData()
+        public static IEmployee<Employee, bool, int> EmployeeData()
         {
             return new EmployeeRepo();
         }

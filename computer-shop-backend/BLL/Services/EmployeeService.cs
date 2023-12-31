@@ -28,5 +28,23 @@ namespace BLL.Services
             decimal totalAmount = salaries.Sum(s => decimal.Parse(s.Amount));
             return Convert.ToInt32(totalAmount);
         }
+        public static List<EmployeeDTO> NonApprovedEmployeeList()
+        {
+            var data = DataAccessFactory.EmployeeData().Get();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Employee, EmployeeDTO>();
+            });
+            var mapper = new Mapper(config);
+            return mapper.Map<List<EmployeeDTO>>(data.Where(d=>d.AdminApproval==0));
+        }
+        public static bool AdminApprove(int Id)
+        {
+            return DataAccessFactory.EmployeeData().Approve(Id);
+        }
+        public static bool Delete(int Id)
+        {
+            return DataAccessFactory.EmployeeData().Delete(Id);
+        }
     }
 }
