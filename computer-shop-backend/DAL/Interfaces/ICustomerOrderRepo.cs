@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IProductRepo<Type, RET>
+    public interface ICustomerOrderRepo<Type, Id>
     {
-        List<RET> FilterProduct(Type obj);
+        List<Type> CustomerOrders(Id id);
+        Type CustomerOrderDetails(Id orderId);
     }
 }

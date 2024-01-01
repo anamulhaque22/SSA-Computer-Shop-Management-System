@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using computerShop.Auth;
 using computerShop.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace computerShop.Controllers
     {
         [HttpGet]
         [Route("{id}")]
+        [CustomerLogged]
         public HttpResponseMessage GetACustomer(int id)
         {
             try

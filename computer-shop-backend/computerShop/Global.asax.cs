@@ -12,6 +12,10 @@ namespace computerShop
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            // Configure JSON settings
+    var jsonSettings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
+            jsonSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            jsonSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
         }
     }
 }

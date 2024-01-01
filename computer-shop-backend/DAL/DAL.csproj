@@ -107,6 +107,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Criteria\ImageCriteria.cs" />
+    <Compile Include="Criteria\OrderStatus.cs" />
     <Compile Include="Criteria\ProductFilterCriteria.cs" />
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\Models\Admin.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IChange.cs" />
     <Compile Include="Interfaces\IAdminTools.cs" />
+    <Compile Include="Interfaces\ICustomerOrderRepo.cs" />
     <Compile Include="Interfaces\IDiscount.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
@@ -184,7 +186,6 @@
     <Compile Include="Migrations\202312301645127_CustomerToken.designer.cs">
       <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
     </Compile>
-    
     <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
     <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
       <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
@@ -197,6 +198,18 @@
     <Compile Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.designer.cs">
       <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.cs" />
+    <Compile Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.designer.cs">
+      <DependentUpon>202312302002575_UpdatedProductTablePriceDoubleToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312311545146_UpdatedOrderTable.cs" />
+    <Compile Include="Migrations\202312311545146_UpdatedOrderTable.designer.cs">
+      <DependentUpon>202312311545146_UpdatedOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312312107217_ProductTableNavigation.cs" />
+    <Compile Include="Migrations\202312312107217_ProductTableNavigation.designer.cs">
+      <DependentUpon>202312312107217_ProductTableNavigation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,6 +219,8 @@
     <Compile Include="Repo\BrandRepo.cs" />
     <Compile Include="Repo\CategoryRepo.cs" />
     <Compile Include="Repo\DiscountRepo.cs" />
+    <Compile Include="Repo\IOrderStatus.cs" />
+    <Compile Include="Repo\OrderRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />
     <Compile Include="Repo\CustomerTokenRepo.cs" />
@@ -254,7 +269,6 @@
     <EmbeddedResource Include="Migrations\202312301645127_CustomerToken.resx">
       <DependentUpon>202312301645127_CustomerToken.cs</DependentUpon>
     </EmbeddedResource>
-    
     <EmbeddedResource Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
       <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +277,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.resx">
       <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.resx">
+      <DependentUpon>202312302002575_UpdatedProductTablePriceDoubleToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312311545146_UpdatedOrderTable.resx">
+      <DependentUpon>202312311545146_UpdatedOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312312107217_ProductTableNavigation.resx">
+      <DependentUpon>202312312107217_ProductTableNavigation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

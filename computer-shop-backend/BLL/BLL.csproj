@@ -71,12 +71,18 @@
     <Compile Include="DTOs\MAttendanceReportDTO.cs" />
     <Compile Include="DTOs\ModeratorDTO.cs" />
     <Compile Include="DTOs\MSalaryDTO.cs" />
+    <Compile Include="DTOs\OrderDetailDTO.cs" />
+    <Compile Include="DTOs\OrderDetailsGetDTO.cs" />
+    <Compile Include="DTOs\OrderDTO.cs" />
+    <Compile Include="DTOs\OrderGetDTO.cs" />
+    <Compile Include="DTOs\OrderStatusDTO.cs" />
     <Compile Include="DTOs\PieChartItemDTO.cs" />
     <Compile Include="DTOs\ProductCategoryBrandDTO.cs" />
     <Compile Include="DTOs\ProductCreateDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\ProductFilterDTO.cs" />
     <Compile Include="DTOs\SalaryDTO.cs" />
+    <Compile Include="DTOs\SingleOrderDetailsDTO.cs" />
     <Compile Include="DTOs\TaskDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="DTOs\TotalRevenueDTO.cs" />
@@ -91,6 +97,7 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModeratorService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductKeyService.cs" />
     <Compile Include="Services\SalaryService.cs" />
     <Compile Include="Services\ProductService.cs" />

@@ -57,6 +57,18 @@ namespace DAL
         {
             return new CustomerTokenRepo();
         }
+        public static IRepo<Order, int, bool> OrderData()
+        {
+            return new OrderRepo();
+        }
+        public static IOrderStatus<OrderStatus> OrderStatusData()
+        {
+            return new OrderRepo();
+        }
+        public static ICustomerOrderRepo<Order, int> CustomerOrderData()
+        {
+            return new OrderRepo();
+        }
         public static IRepo<Category, int, bool> CategoryData()
         {
             return new CategoryRepo();

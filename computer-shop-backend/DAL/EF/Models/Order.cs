@@ -25,11 +25,55 @@ namespace DAL.EF.Models
 
         public string OrderNote { get; set; }
 
+        public string OrderStatus { get; private set; }
+        // Public methods to set the OrderStatus
+        public void SetStatusPending()
+        {
+            OrderStatus = "Pending";
+        }
+
+        public void SetStatusConfirm()
+        {
+            OrderStatus = "Confirm";
+        }
+
+        public void SetStatusOnTheWay()
+        {
+            OrderStatus = "On The Way";
+        }
+
+        public void SetStatusDelivered()
+        {
+            OrderStatus = "Delivered";
+        }
+        public void SetStatusCancled()
+        {
+            OrderStatus = "Canceled";
+        }
+
+        public string PaymentStatus { get; private set; }
+        public void SetPaymentStatusPending()
+        {
+            PaymentStatus = "Pending";
+        }
+        public void SetPaymentStatusCompleted()
+        {
+            PaymentStatus = "Completed";
+        }
+        public void SetPaymentStatusCancled()
+        {
+            PaymentStatus = "Canceled";
+        }
+
         public int CustomerId { get; set; }
 
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public Order()
+        {
+            OrderDetails = new List<OrderDetail>();
+        }
     }
 }

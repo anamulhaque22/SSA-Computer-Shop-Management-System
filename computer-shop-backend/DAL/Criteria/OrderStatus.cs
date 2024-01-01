@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Interfaces
+namespace DAL.Criteria
 {
-    public interface IProductRepo<Type, RET>
+    public class OrderStatus
     {
-        List<RET> FilterProduct(Type obj);
+        public int OrderId { get; set; }
+        public string Status { get; set; }
     }
 }
