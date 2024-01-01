@@ -80,6 +80,10 @@
     <Compile Include="Migrations\202312291725240_DBFINAL.designer.cs">
       <DependentUpon>202312291725240_DBFINAL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401010655503_init.cs" />
+    <Compile Include="Migrations\202401010655503_init.designer.cs">
+      <DependentUpon>202401010655503_init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +103,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202312291725240_DBFINAL.resx">
       <DependentUpon>202312291725240_DBFINAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401010655503_init.resx">
+      <DependentUpon>202401010655503_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
