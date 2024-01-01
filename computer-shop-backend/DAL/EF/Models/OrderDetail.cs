@@ -12,9 +12,6 @@ namespace DAL.EF.Models
     {
         public int Id { get; set; }
 
-        public int OrderId { get; set; }
-        public int ProductId { get; set; }
-
         [Required]
         public int Quantity { get; set; }
 
@@ -24,10 +21,12 @@ namespace DAL.EF.Models
         [Required]
         public int UnitCostPrice { get; set; }
 
-        [ForeignKey("OrderId")]
-        public virtual Order Order { get; set; }
+        [ForeignKey("Order")]
+        public int OrderId { get; set; }
 
-        [ForeignKey("ProductId")]
+        [ForeignKey("Product")]
+        public int ProductId { get; set; }
+        public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using computerShop.Auth;
 using computerShop.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace computerShop.Controllers
     {
         [HttpGet]
         [Route("{id}")]
+        [CustomerLogged]
         public HttpResponseMessage GetACustomer(int id)
         {
             try
@@ -52,6 +54,29 @@ namespace computerShop.Controllers
                 var res = AuthService.CustomerAuthenticate(login.Email, login.Password);
                 if(res != null) return Request.CreateResponse(HttpStatusCode.OK, res);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = "User not found!"});
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpGet]
+        [Route("logout")]
+        [CustomerLogged]
+        public HttpResponseMessage Logout()
+        {
+            try
+            {
+                var token = Request.Headers.Authorization?.ToString();
+                if (!string.IsNullOrEmpty(token) && AuthService.CustomerLogout(token))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Logout successful" });
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { Message = "Invalid token" });
+                }
             }
             catch (Exception ex)
             {

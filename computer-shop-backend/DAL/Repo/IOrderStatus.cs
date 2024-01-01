@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Interfaces
+namespace DAL.Repo
 {
-    public interface IProductRepo<Type, RET>
+    public interface IOrderStatus<Type>
     {
-        List<RET> FilterProduct(Type obj);
+        bool ChangeOrderStatus(Type type);
     }
 }

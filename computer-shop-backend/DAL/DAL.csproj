@@ -107,6 +107,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Criteria\ImageCriteria.cs" />
+    <Compile Include="Criteria\OrderStatus.cs" />
     <Compile Include="Criteria\ProductFilterCriteria.cs" />
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\Models\Admin.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Interfaces\IChange.cs" />
     <Compile Include="Interfaces\IAdminTools.cs" />
     <Compile Include="Interfaces\ICustomerProfit.cs" />
+    <Compile Include="Interfaces\ICustomerOrderRepo.cs" />
     <Compile Include="Interfaces\IDiscount.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
@@ -224,6 +226,22 @@
     <Compile Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.designer.cs">
       <DependentUpon>202312311558090_OtpVerifiedFieldAddedInAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.cs" />
+    <Compile Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.designer.cs">
+      <DependentUpon>202312302002575_UpdatedProductTablePriceDoubleToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312311545146_UpdatedOrderTable.cs" />
+    <Compile Include="Migrations\202312311545146_UpdatedOrderTable.designer.cs">
+      <DependentUpon>202312311545146_UpdatedOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312312107217_ProductTableNavigation.cs" />
+    <Compile Include="Migrations\202312312107217_ProductTableNavigation.designer.cs">
+      <DependentUpon>202312312107217_ProductTableNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401011501151_MigrationErrorUpdated.cs" />
+    <Compile Include="Migrations\202401011501151_MigrationErrorUpdated.designer.cs">
+      <DependentUpon>202401011501151_MigrationErrorUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -236,6 +254,8 @@
     <Compile Include="Repo\DiscountRepo.cs" />
     <Compile Include="Repo\EmployeeRepo.cs" />
     <Compile Include="Repo\AdminOtpRepo.cs" />
+    <Compile Include="Repo\IOrderStatus.cs" />
+    <Compile Include="Repo\OrderRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />
     <Compile Include="Repo\CustomerTokenRepo.cs" />
@@ -313,6 +333,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.resx">
       <DependentUpon>202312311558090_OtpVerifiedFieldAddedInAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.resx">
+      <DependentUpon>202312302002575_UpdatedProductTablePriceDoubleToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312311545146_UpdatedOrderTable.resx">
+      <DependentUpon>202312311545146_UpdatedOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312312107217_ProductTableNavigation.resx">
+      <DependentUpon>202312312107217_ProductTableNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401011501151_MigrationErrorUpdated.resx">
+      <DependentUpon>202401011501151_MigrationErrorUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

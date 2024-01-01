@@ -64,6 +64,7 @@ namespace BLL.Services
             var result = DataAccessFactory.CustomerAuthData().Authenticate(email, password);
             if (result)
             {
+                //var  exToken = DataAccessFactory.CustomerTokenData.Read()
                 var token = new CustomerToken();
                 token.Email = email;
                 token.CreatedAt = DateTime.Now;
@@ -81,7 +82,22 @@ namespace BLL.Services
                 }
             }
             return null;
-
+        }
+        public static bool IsCustomerTokenValid(string tkey)
+        {
+            var extk = DataAccessFactory.CustomerTokenData().Read(tkey);
+            if(extk != null && extk.DeletedAt == null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool CustomerLogout(string tkey)
+        {
+            var extk = DataAccessFactory.CustomerTokenData().Read(tkey);
+            extk.DeletedAt = DateTime.Now;
+            if (DataAccessFactory.CustomerTokenData().Update(extk) != null) return true;
+            return false;
         }
         public static bool IsTokenVaild(string tkey)
         {
@@ -101,6 +117,7 @@ namespace BLL.Services
             }
             return false;
         }
+
         public static bool AdminLogout(string tkey)
         {
             var extk = DataAccessFactory.AdminTokenData().Read(tkey);

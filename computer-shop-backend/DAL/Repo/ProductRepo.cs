@@ -75,6 +75,7 @@ namespace DAL.Repo
             return query.ToList();
         }
 
+
         public List<Product> Read()
         {
             var data = db.Products.ToList();

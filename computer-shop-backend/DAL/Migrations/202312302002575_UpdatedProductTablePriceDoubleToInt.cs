@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CustomerProfitTableModified : DbMigration
+    public partial class UpdatedProductTablePriceDoubleToInt : DbMigration
     {
         public override void Up()
         {
@@ -19,8 +19,8 @@
                     })
                 .PrimaryKey(t => t.Id);
             
-            //AddColumn("dbo.Products", "ImageUrl", c => c.String(nullable: false));
-            //AddColumn("dbo.Products", "PublicImageId", c => c.String(nullable: false));
+            AddColumn("dbo.Products", "ImageUrl", c => c.String(nullable: false));
+            AddColumn("dbo.Products", "PublicImageId", c => c.String(nullable: false));
         }
         
         public override void Down()
