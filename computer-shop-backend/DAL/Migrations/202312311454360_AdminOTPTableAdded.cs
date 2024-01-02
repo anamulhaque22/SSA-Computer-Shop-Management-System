@@ -7,15 +7,15 @@
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.AdminOTPs",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Otp = c.Int(nullable: false),
-                        Username = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
+            //CreateTable(
+            //    "dbo.AdminOTPs",
+            //    c => new
+            //        {
+            //            Id = c.Int(nullable: false, identity: true),
+            //            Otp = c.Int(nullable: false),
+            //            Username = c.String(),
+            //        })
+            //    .PrimaryKey(t => t.Id);
             
         }
         

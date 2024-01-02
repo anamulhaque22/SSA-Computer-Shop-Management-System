@@ -7,7 +7,7 @@
     {
         public override void Up()
         {
-            AlterColumn("dbo.AdminOTPs", "Otp", c => c.String());
+            //AlterColumn("dbo.AdminOTPs", "Otp", c => c.String());
         }
         
         public override void Down()

@@ -105,12 +105,11 @@ namespace BLL.Services
         }
         public static bool CalculateAndSaveRevenue(int OrderId)
         {
-            List<OrderDetail> orderDetails = null; //this line will be removed.
-            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
+            List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailData().Get(OrderId);
             int profit = 0;
             foreach (var orderDetail in orderDetails)
             {
-                profit += (orderDetail.UnitPrice - orderDetail.UnitCostPrice);
+                profit += (orderDetail.UnitPrice - orderDetail.UnitCostPrice)*orderDetail.Quantity;
             }
             int currentYear = DateTime.Now.Year;
             var currRevData = DataAccessFactory.TotalRevenueData().Get(currentYear);
@@ -119,6 +118,7 @@ namespace BLL.Services
                 TotalRevenue totalRevenue = new TotalRevenue();
                 totalRevenue.Year = currentYear;
                 DataAccessFactory.TotalRevenueData().Create(totalRevenue);
+                currRevData = totalRevenue;
             }
             int currentMonth = DateTime.Now.Month;
             currRevData.Year = currentYear;

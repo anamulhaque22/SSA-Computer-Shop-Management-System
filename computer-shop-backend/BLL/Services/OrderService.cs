@@ -49,12 +49,26 @@ namespace BLL.Services
 
         public static bool ChangeOrderStatus(OrderStatusDTO os)
         {
-
-            return DataAccessFactory.OrderStatusData().ChangeOrderStatus(new OrderStatus
+            bool flag = DataAccessFactory.OrderStatusData().ChangeOrderStatus(new OrderStatus
             {
                 OrderId = os.OrderId,
                 Status = os.Status,
             });
+            if (flag && os.Status.Equals("Delivered"))
+            {
+                try
+                {
+                    CustomerProfitService.SaveCustomerProfit(os.OrderId);
+                    TotalSaleService.CalculateAndSaveSales(os.OrderId);
+                    TotalRevenuesService.CalculateAndSaveRevenue(os.OrderId);
+                    ProductService.SaveProductSoldCount(os.OrderId);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return flag;
         }
 
         public static List<OrderGetDTO> GetAllOrder()

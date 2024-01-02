@@ -93,8 +93,7 @@ namespace BLL.Services
         }
         public static bool SaveProductSoldCount(int OrderId) //Have to call this method when Inventory Manager will approve order.
         {
-            List<OrderDetail> orderDetails = null; //this line will be removed.
-            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
+            List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailData().Get(OrderId);
             bool flag = true;
             foreach (var orderDetail in orderDetails)
             {

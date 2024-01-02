@@ -57,10 +57,8 @@ namespace BLL.Services
         }
         public static bool SaveCustomerProfit(int OrderId)
         {
-            List<OrderDetail> orderDetails = null; //this line will be removed.
-            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
-            int cusId = 0; //this line will be removed.
-            //int cusId = DataAccessFactory.OrderData().Get(OrderId); //this line will be uncomment
+            List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailData().Get(OrderId);
+            int cusId = DataAccessFactory.OrderData().Read(OrderId).CustomerId;
             int profit = 0; 
             foreach (var orderDetail in orderDetails)
             {

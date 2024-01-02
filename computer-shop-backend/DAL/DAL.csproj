@@ -141,6 +141,7 @@
     <Compile Include="Interfaces\IDiscount.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Interfaces\IFacade.cs" />
+    <Compile Include="Interfaces\IOrderDetail.cs" />
     <Compile Include="Interfaces\IProductKey.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
@@ -254,7 +255,8 @@
     <Compile Include="Repo\DiscountRepo.cs" />
     <Compile Include="Repo\EmployeeRepo.cs" />
     <Compile Include="Repo\AdminOtpRepo.cs" />
-    <Compile Include="Repo\IOrderStatus.cs" />
+    <Compile Include="Interfaces\IOrderStatus.cs" />
+    <Compile Include="Repo\OrderDetailRepo.cs" />
     <Compile Include="Repo\OrderRepo.cs" />
     <Compile Include="Repo\ProductKeyRepo.cs" />
     <Compile Include="Repo\CustomerRepo.cs" />

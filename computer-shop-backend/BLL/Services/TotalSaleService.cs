@@ -106,12 +106,11 @@ namespace BLL.Services
         }
         public static bool CalculateAndSaveSales(int OrderId)
         {
-            List<OrderDetail> orderDetails = null; //this line will be removed.
-            //List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailsData().Get(OrderId); //this line will be uncomment
+            List<OrderDetail> orderDetails = DataAccessFactory.OrderDetailData().Get(OrderId); 
             int sales = 0;
             foreach (var orderDetail in orderDetails)
             {
-                sales += orderDetail.UnitPrice;
+                sales += orderDetail.UnitPrice * orderDetail.Quantity;
             }
             int currentYear = DateTime.Now.Year;
             var currSaleData = DataAccessFactory.TotalSaleData().Get(currentYear);
@@ -120,6 +119,7 @@ namespace BLL.Services
                 TotalSale totalSale = new TotalSale();
                 totalSale.Year = currentYear;
                 DataAccessFactory.TotalSaleData().Create(totalSale);
+                currSaleData = totalSale;
             }
             int currentMonth = DateTime.Now.Month;
             currSaleData.Year = currentYear;

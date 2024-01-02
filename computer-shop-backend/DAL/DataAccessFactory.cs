@@ -144,5 +144,8 @@ namespace DAL
         {
             return new AdminOtpRepo();
         }
+        public static IOrderDetail<OrderDetail,int,bool> OrderDetailData() {
+        return new OrderDetailRepo();
+        }
     }
 }
