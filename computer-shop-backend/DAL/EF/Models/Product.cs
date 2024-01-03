@@ -10,6 +10,7 @@ namespace DAL.EF.Models
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Product name is require!")]

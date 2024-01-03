@@ -147,101 +147,9 @@
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Interfaces\ITotalRevenue.cs" />
     <Compile Include="Interfaces\ITotalSales.cs" />
-    <Compile Include="Migrations\202312222354044_InitialDb.cs" />
-    <Compile Include="Migrations\202312222354044_InitialDb.designer.cs">
-      <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312290119010_AdminRelatedTablesCreated.cs" />
-    <Compile Include="Migrations\202312290119010_AdminRelatedTablesCreated.designer.cs">
-      <DependentUpon>202312290119010_AdminRelatedTablesCreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312290123564_AdminTablesDefaultValueSet.cs" />
-    <Compile Include="Migrations\202312290123564_AdminTablesDefaultValueSet.designer.cs">
-      <DependentUpon>202312290123564_AdminTablesDefaultValueSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312281740345_newtable.cs" />
-    <Compile Include="Migrations\202312281740345_newtable.designer.cs">
-      <DependentUpon>202312281740345_newtable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.cs" />
-    <Compile Include="Migrations\202312291426209_pictureNameNullAsDefault.designer.cs">
-      <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.cs" />
-    <Compile Include="Migrations\202312291627223_AdminTokenTableCreated.designer.cs">
-      <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312301323536_FixedDiscountAndTaskTable.cs" />
-    <Compile Include="Migrations\202312301323536_FixedDiscountAndTaskTable.designer.cs">
-      <DependentUpon>202312301323536_FixedDiscountAndTaskTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs" />
-    <Compile Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.designer.cs">
-      <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
-    <Compile Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
-      <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs" />
-    <Compile Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.designer.cs">
-      <DependentUpon>202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs" />
-    <Compile Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.designer.cs">
-      <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312302157435_CustomerProfitTableModified.cs" />
-    <Compile Include="Migrations\202312302157435_CustomerProfitTableModified.designer.cs">
-      <DependentUpon>202312302157435_CustomerProfitTableModified.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs" />
-    <Compile Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.designer.cs">
-      <DependentUpon>202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312302315381_SoldCountAddedInProductTable.cs" />
-    <Compile Include="Migrations\202312302315381_SoldCountAddedInProductTable.designer.cs">
-      <DependentUpon>202312302315381_SoldCountAddedInProductTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs" />
-    <Compile Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.designer.cs">
-      <DependentUpon>202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312310005121_EmployeeTableAdded.cs" />
-    <Compile Include="Migrations\202312310005121_EmployeeTableAdded.designer.cs">
-      <DependentUpon>202312310005121_EmployeeTableAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312311454360_AdminOTPTableAdded.cs" />
-    <Compile Include="Migrations\202312311454360_AdminOTPTableAdded.designer.cs">
-      <DependentUpon>202312311454360_AdminOTPTableAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312311500568_AdminOTPTableAddedFixed.cs" />
-    <Compile Include="Migrations\202312311500568_AdminOTPTableAddedFixed.designer.cs">
-      <DependentUpon>202312311500568_AdminOTPTableAddedFixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312311519024_AdminOTPTableIntToString.cs" />
-    <Compile Include="Migrations\202312311519024_AdminOTPTableIntToString.designer.cs">
-      <DependentUpon>202312311519024_AdminOTPTableIntToString.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.cs" />
-    <Compile Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.designer.cs">
-      <DependentUpon>202312311558090_OtpVerifiedFieldAddedInAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.cs" />
-    <Compile Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.designer.cs">
-      <DependentUpon>202312302002575_UpdatedProductTablePriceDoubleToInt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312311545146_UpdatedOrderTable.cs" />
-    <Compile Include="Migrations\202312311545146_UpdatedOrderTable.designer.cs">
-      <DependentUpon>202312311545146_UpdatedOrderTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312312107217_ProductTableNavigation.cs" />
-    <Compile Include="Migrations\202312312107217_ProductTableNavigation.designer.cs">
-      <DependentUpon>202312312107217_ProductTableNavigation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401011501151_MigrationErrorUpdated.cs" />
-    <Compile Include="Migrations\202401011501151_MigrationErrorUpdated.designer.cs">
-      <DependentUpon>202401011501151_MigrationErrorUpdated.cs</DependentUpon>
+    <Compile Include="Migrations\202401030024586_AllTableCreated.cs" />
+    <Compile Include="Migrations\202401030024586_AllTableCreated.designer.cs">
+      <DependentUpon>202401030024586_AllTableCreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceReport.cs" />
@@ -276,77 +184,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202312222354044_InitialDb.resx">
-      <DependentUpon>202312222354044_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312290119010_AdminRelatedTablesCreated.resx">
-      <DependentUpon>202312290119010_AdminRelatedTablesCreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312290123564_AdminTablesDefaultValueSet.resx">
-      <DependentUpon>202312290123564_AdminTablesDefaultValueSet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312281740345_newtable.resx">
-      <DependentUpon>202312281740345_newtable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312291426209_pictureNameNullAsDefault.resx">
-      <DependentUpon>202312291426209_pictureNameNullAsDefault.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312291627223_AdminTokenTableCreated.resx">
-      <DependentUpon>202312291627223_AdminTokenTableCreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301323536_FixedDiscountAndTaskTable.resx">
-      <DependentUpon>202312301323536_FixedDiscountAndTaskTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301617565_YearAddedInTotalSalesAndTotalRevTable.resx">
-      <DependentUpon>202312301617565_YearAddedInTotalSalesAndTotalRevTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
-      <DependentUpon>202312301916340_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.resx">
-      <DependentUpon>202312301920147_Fixed_CustomerProfitAddedAndProductOrderDetailTableModified.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312301936457_CustomerProfitAndCustomerRelationshipRemoved.resx">
-      <DependentUpon>202312301936457_CustomerProfitAndCustomerRelationshipRemoved.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312302157435_CustomerProfitTableModified.resx">
-      <DependentUpon>202312302157435_CustomerProfitTableModified.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.resx">
-      <DependentUpon>202312302228424_TempTotalProfitFieldRemovedFromCustomerProfitTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312302315381_SoldCountAddedInProductTable.resx">
-      <DependentUpon>202312302315381_SoldCountAddedInProductTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312302331035_DefaultValueAddedInSoldCountOfProductTable.resx">
-      <DependentUpon>202312302331035_DefaultValueAddedInSoldCountOfProductTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312310005121_EmployeeTableAdded.resx">
-      <DependentUpon>202312310005121_EmployeeTableAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312311454360_AdminOTPTableAdded.resx">
-      <DependentUpon>202312311454360_AdminOTPTableAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312311500568_AdminOTPTableAddedFixed.resx">
-      <DependentUpon>202312311500568_AdminOTPTableAddedFixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312311519024_AdminOTPTableIntToString.resx">
-      <DependentUpon>202312311519024_AdminOTPTableIntToString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312311558090_OtpVerifiedFieldAddedInAdmin.resx">
-      <DependentUpon>202312311558090_OtpVerifiedFieldAddedInAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312302002575_UpdatedProductTablePriceDoubleToInt.resx">
-      <DependentUpon>202312302002575_UpdatedProductTablePriceDoubleToInt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312311545146_UpdatedOrderTable.resx">
-      <DependentUpon>202312311545146_UpdatedOrderTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312312107217_ProductTableNavigation.resx">
-      <DependentUpon>202312312107217_ProductTableNavigation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401011501151_MigrationErrorUpdated.resx">
-      <DependentUpon>202401011501151_MigrationErrorUpdated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401030024586_AllTableCreated.resx">
+      <DependentUpon>202401030024586_AllTableCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
